@@ -1,0 +1,559 @@
+<title>Three Plans, One Cluster</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+:root{
+  --ground:#FBFAF7;
+  --surface:#FFFFFF;
+  --surface-sunk:#F4F2EC;
+  --ink:#1E211D;
+  --ink-soft:#4A5049;
+  --ink-mute:#787E77;
+  --rule:#E2DFD6;
+  --rule-soft:#EEEBE3;
+  --accent:#1F5B4E;
+  --accent-soft:#E4EDE9;
+  --accent-ink:#194A40;
+  --flag:#A84A22;
+  --flag-soft:#F6E9E1;
+  --shadow:0 1px 2px rgba(30,33,29,.05), 0 8px 24px -16px rgba(30,33,29,.22);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#141816;
+    --surface:#1B201D;
+    --surface-sunk:#20261F;
+    --ink:#ECEAE2;
+    --ink-soft:#B9BEB6;
+    --ink-mute:#8B928A;
+    --rule:#2E342F;
+    --rule-soft:#252B27;
+    --accent:#6BB9A2;
+    --accent-soft:#1E2F2A;
+    --accent-ink:#8ED0BB;
+    --flag:#E0906A;
+    --flag-soft:#33251D;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px -16px rgba(0,0,0,.6);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#141816;
+  --surface:#1B201D;
+  --surface-sunk:#20261F;
+  --ink:#ECEAE2;
+  --ink-soft:#B9BEB6;
+  --ink-mute:#8B928A;
+  --rule:#2E342F;
+  --rule-soft:#252B27;
+  --accent:#6BB9A2;
+  --accent-soft:#1E2F2A;
+  --accent-ink:#8ED0BB;
+  --flag:#E0906A;
+  --flag-soft:#33251D;
+  --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px -16px rgba(0,0,0,.6);
+}
+
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  background:var(--ground);
+  color:var(--ink);
+  font-family:"Public Sans","Helvetica Neue",Arial,sans-serif;
+  font-size:16.5px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{
+  max-width:1080px;
+  margin:0 auto;
+  padding:clamp(2rem,5vw,4.5rem) clamp(1.1rem,4vw,2.5rem) 6rem;
+  display:flex;
+  flex-direction:column;
+  gap:clamp(2.75rem,5vw,4.25rem);
+}
+.prose{max-width:68ch;}
+
+/* ---------- type ---------- */
+h1,h2,h3,h4{font-family:"Newsreader",Georgia,serif;font-weight:600;text-wrap:balance;margin:0;line-height:1.18;letter-spacing:-.011em;}
+h1{font-size:clamp(2.3rem,5.6vw,3.5rem);letter-spacing:-.022em;}
+h2{font-size:clamp(1.55rem,3.2vw,2.05rem);}
+h3{font-size:1.2rem;line-height:1.3;}
+h4{font-size:1.02rem;font-family:"Public Sans",sans-serif;font-weight:700;letter-spacing:-.003em;}
+p{margin:0;}
+a{color:var(--accent-ink);}
+strong{font-weight:600;color:var(--ink);}
+
+.eyebrow{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:.7rem;
+  font-weight:500;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--ink-mute);
+}
+
+/* ---------- header ---------- */
+.masthead{display:flex;flex-direction:column;gap:1.15rem;}
+.masthead .standfirst{
+  font-family:"Newsreader",Georgia,serif;
+  font-size:clamp(1.12rem,2.2vw,1.33rem);
+  line-height:1.52;
+  color:var(--ink-soft);
+  max-width:60ch;
+}
+.dateline{
+  display:flex;flex-wrap:wrap;gap:.5rem 1.4rem;
+  padding-top:1.15rem;border-top:1px solid var(--rule);
+  font-family:"IBM Plex Mono",monospace;font-size:.74rem;
+  letter-spacing:.05em;color:var(--ink-mute);
+}
+.dateline span strong{color:var(--ink-soft);font-weight:500;}
+
+/* ---------- generic section ---------- */
+section{display:flex;flex-direction:column;gap:1.5rem;}
+.sec-head{display:flex;flex-direction:column;gap:.5rem;}
+.sec-head p{color:var(--ink-soft);max-width:66ch;}
+
+/* ---------- lede ---------- */
+.lede{
+  background:var(--surface);
+  border:1px solid var(--rule);
+  border-left:3px solid var(--accent);
+  border-radius:2px;
+  padding:clamp(1.4rem,3vw,2rem);
+  display:flex;flex-direction:column;gap:.95rem;
+  box-shadow:var(--shadow);
+}
+.lede p{max-width:70ch;color:var(--ink-soft);}
+.lede p:first-of-type{color:var(--ink);font-size:1.06rem;}
+
+/* ---------- building cards ---------- */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1rem;}
+.card{
+  background:var(--surface);border:1px solid var(--rule);border-radius:2px;
+  padding:1.35rem 1.35rem 1.2rem;display:flex;flex-direction:column;gap:.85rem;
+  box-shadow:var(--shadow);
+}
+.card h3{font-size:1.28rem;}
+.card .thesis{font-size:.93rem;color:var(--ink-soft);line-height:1.55;}
+.stats{display:flex;flex-direction:column;gap:.05rem;margin-top:auto;border-top:1px solid var(--rule-soft);padding-top:.8rem;}
+.stat{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.3rem 0;border-bottom:1px solid var(--rule-soft);}
+.stat:last-child{border-bottom:0;}
+.stat dt{font-size:.79rem;color:var(--ink-mute);letter-spacing:.005em;}
+.stat dd{
+  margin:0;font-family:"IBM Plex Mono",monospace;font-size:.83rem;font-weight:500;
+  font-variant-numeric:tabular-nums;color:var(--ink);text-align:right;
+}
+
+/* ---------- matrix ---------- */
+.scroller{overflow-x:auto;border:1px solid var(--rule);border-radius:2px;background:var(--surface);box-shadow:var(--shadow);}
+table{border-collapse:collapse;width:100%;min-width:720px;font-size:.87rem;}
+caption{caption-side:bottom;text-align:left;padding:.85rem 1.1rem;color:var(--ink-mute);font-size:.79rem;border-top:1px solid var(--rule-soft);}
+th,td{text-align:left;padding:.72rem .95rem;border-bottom:1px solid var(--rule-soft);vertical-align:top;}
+thead th{
+  font-family:"IBM Plex Mono",monospace;font-size:.7rem;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute);
+  border-bottom:1px solid var(--rule);white-space:nowrap;
+}
+tbody th{font-weight:600;color:var(--ink);width:22%;font-size:.84rem;}
+tbody tr:last-child th,tbody tr:last-child td{border-bottom:0;}
+tbody tr:hover{background:var(--surface-sunk);}
+td{color:var(--ink-soft);font-variant-numeric:tabular-nums;}
+td.gap{color:var(--flag);font-family:"IBM Plex Mono",monospace;font-size:.78rem;}
+
+/* ---------- decide box ---------- */
+.decide{
+  background:var(--flag-soft);border:1px solid var(--flag);border-radius:2px;
+  padding:clamp(1.3rem,3vw,1.85rem);display:flex;flex-direction:column;gap:1rem;
+}
+.decide h3{color:var(--flag);}
+.decide ol{margin:0;padding-left:1.15rem;display:flex;flex-direction:column;gap:.5rem;}
+.decide li{color:var(--ink-soft);font-size:.94rem;}
+.decide li strong{color:var(--ink);}
+
+/* ---------- threads ---------- */
+.threads{display:flex;flex-direction:column;gap:1rem;}
+.thread{
+  background:var(--surface);border:1px solid var(--rule);border-radius:2px;
+  padding:clamp(1.3rem,3vw,1.75rem);display:flex;flex-direction:column;gap:.95rem;
+  box-shadow:var(--shadow);
+}
+.thread-top{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem;}
+.pill{
+  font-family:"IBM Plex Mono",monospace;font-size:.67rem;font-weight:600;
+  letter-spacing:.09em;text-transform:uppercase;
+  background:var(--accent-soft);color:var(--accent-ink);
+  padding:.28rem .6rem;border-radius:2px;white-space:nowrap;
+}
+.thread h3{flex:1 1 15rem;}
+.thread p{color:var(--ink-soft);max-width:72ch;font-size:.96rem;}
+.evidence{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:.1rem;
+  background:var(--rule-soft);border:1px solid var(--rule-soft);
+}
+.evidence div{background:var(--surface-sunk);padding:.7rem .85rem;}
+.evidence dt{
+  font-family:"IBM Plex Mono",monospace;font-size:.67rem;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink-mute);margin-bottom:.28rem;
+}
+.evidence dd{margin:0;font-size:.86rem;color:var(--ink-soft);line-height:1.48;}
+.move{
+  border-top:1px solid var(--rule-soft);padding-top:.9rem;
+  display:flex;gap:.7rem;align-items:flex-start;
+}
+.move .eyebrow{flex:0 0 auto;padding-top:.18rem;color:var(--accent-ink);}
+.move p{font-size:.96rem;color:var(--ink);}
+
+/* ---------- admin guides ---------- */
+.guide{
+  background:var(--surface);border:1px solid var(--rule);border-radius:2px;
+  box-shadow:var(--shadow);overflow:hidden;
+}
+.guide-head{
+  padding:1.2rem clamp(1.3rem,3vw,1.75rem);
+  background:var(--surface-sunk);border-bottom:1px solid var(--rule);
+  display:flex;flex-direction:column;gap:.3rem;
+}
+.guide-head h3{font-size:1.35rem;}
+.guide-head .thesis{font-size:.93rem;color:var(--ink-soft);}
+.guide-body{padding:clamp(1.3rem,3vw,1.75rem);display:flex;flex-direction:column;gap:1.4rem;}
+.block{display:flex;flex-direction:column;gap:.5rem;}
+.block > .eyebrow{color:var(--accent-ink);}
+.block.warn > .eyebrow{color:var(--flag);}
+.block p{color:var(--ink-soft);font-size:.96rem;max-width:72ch;}
+.block ul{margin:0;padding-left:1.1rem;display:flex;flex-direction:column;gap:.45rem;}
+.block li{color:var(--ink-soft);font-size:.94rem;}
+.quote{
+  font-family:"Newsreader",Georgia,serif;font-size:1.1rem;line-height:1.5;
+  color:var(--ink);border-left:2px solid var(--accent);padding-left:.95rem;
+  max-width:62ch;
+}
+
+/* ---------- closing ---------- */
+.closing{
+  background:var(--surface);border:1px solid var(--rule);border-radius:2px;
+  padding:clamp(1.4rem,3vw,2rem);display:flex;flex-direction:column;gap:1rem;
+  box-shadow:var(--shadow);
+}
+.closing ul{margin:0;padding-left:1.1rem;display:flex;flex-direction:column;gap:.5rem;}
+.closing li{color:var(--ink-soft);font-size:.95rem;}
+.foot{
+  border-top:1px solid var(--rule);padding-top:1.2rem;
+  font-family:"IBM Plex Mono",monospace;font-size:.72rem;
+  color:var(--ink-mute);letter-spacing:.04em;line-height:1.7;
+}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important;}}
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <p class="eyebrow">100-Day Plans &middot; Executive Summary</p>
+    <h1>Three Plans, One Cluster</h1>
+    <p class="standfirst">EPAR, Littleton, and Julia Temple wrote their 100-day plans separately. Read together, they chase four of the same things with three different vocabularies &mdash; and each building is strongest exactly where another is thinnest.</p>
+    <div class="dateline">
+      <span><strong>Buildings</strong> &nbsp;EPAR &middot; Littleton &middot; Julia Temple</span>
+      <span><strong>Fourth building</strong> &nbsp;October 2026</span>
+      <span><strong>Plan window</strong> &nbsp;Aug&ndash;Nov 2026</span>
+    </div>
+  </header>
+
+  <section>
+    <div class="lede">
+      <p>The three plans overlap more than they differ. All three name <strong>100% cash collections</strong>. All three are fighting labor cost, just under three different names &mdash; overtime, missed lunches, agency. All three independently invented a welcome program for new admissions. And all three commit to a weekly A/R meeting that nobody has defined the same way.</p>
+      <p>The differences are just as useful. Julia Temple is the only plan that shows its math &mdash; baseline, monthly milestone, and dollar impact on every priority, totaling roughly <strong>$274,000 per month</strong> of identified upside. EPAR is the only plan attacking cost <em>structurally</em> rather than by exhortation, with two permanent changes already dated. Littleton is the only plan that treats people as a strategy instead of a line item, and it is the only one honest enough to print a 61% turnover rate.</p>
+      <p>Each of those strengths is a gap in the other two. That is the argument for banding together, and it is more specific than "we should share best practices."</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="eyebrow">The three buildings</p>
+      <h2>Where each plan puts its weight</h2>
+    </div>
+    <div class="cards">
+
+      <article class="card">
+        <h3>EPAR</h3>
+        <p class="thesis">The most operationally specific plan of the three, and the only one with a named owner on every goal. Attacks cost by changing structures, not by asking people to spend less.</p>
+        <dl class="stats">
+          <div class="stat"><dt>Census target</dt><dd>75+ ADC</dd></div>
+          <div class="stat"><dt>Collections</dt><dd>100%+</dd></div>
+          <div class="stat"><dt>Bad debt</dt><dd>&le;3%</dd></div>
+          <div class="stat"><dt>Overtime</dt><dd>&lt;10%</dd></div>
+          <div class="stat"><dt>Signature bet</dt><dd>Labs in-house 9/1</dd></div>
+        </dl>
+      </article>
+
+      <article class="card">
+        <h3>Littleton</h3>
+        <p class="thesis">The only plan built around workforce and culture as the engine. Names the hardest number in the cluster &mdash; 61% turnover &mdash; and treats agency spend as its symptom.</p>
+        <dl class="stats">
+          <div class="stat"><dt>Skilled mix</dt><dd>50%</dd></div>
+          <div class="stat"><dt>Collections</dt><dd>100% (6-mo avg 94%)</dd></div>
+          <div class="stat"><dt>Agency</dt><dd>$17 &rarr; &lt;$2 WPPD</dd></div>
+          <div class="stat"><dt>Turnover</dt><dd>61% &rarr; &lt;30%</dd></div>
+          <div class="stat"><dt>Signature bet</dt><dd>Onboarding + culture</dd></div>
+        </dl>
+      </article>
+
+      <article class="card">
+        <h3>Julia Temple</h3>
+        <p class="thesis">The only plan that shows its math. Every priority carries a baseline, a monthly milestone, and a dollar figure &mdash; which makes it the most checkable and the most persuasive.</p>
+        <dl class="stats">
+          <div class="stat"><dt>Census</dt><dd>102/16 &rarr; 120/25</dd></div>
+          <div class="stat"><dt>Collections</dt><dd>&gt;100%</dd></div>
+          <div class="stat"><dt>Bad debt</dt><dd>2.05% &rarr; &lt;1%</dd></div>
+          <div class="stat"><dt>Overtime</dt><dd>14.4% &rarr; &le;10%</dd></div>
+          <div class="stat"><dt>Identified upside</dt><dd>~$274K/mo</dd></div>
+        </dl>
+      </article>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="eyebrow">Side by side</p>
+      <h2>The same plan, three vocabularies</h2>
+      <p>Read down a row, not across a plan. Where a cell is empty, that building has not addressed the dimension at all &mdash; and in every case, at least one of its two peers has.</p>
+    </div>
+    <div class="scroller">
+      <table>
+        <caption>Blank cells are drawn from what each plan states explicitly; an omission here means the plan is silent, not that the building is failing.</caption>
+        <thead>
+          <tr><th scope="col">Dimension</th><th scope="col">EPAR</th><th scope="col">Littleton</th><th scope="col">Julia Temple</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Volume target</th><td>75+ ADC</td><td class="gap">no ADC stated</td><td>120 total / 25 skilled</td></tr>
+          <tr><th scope="row">Current baseline</th><td class="gap">not stated</td><td class="gap">not stated</td><td>102 / 16 (July MTD)</td></tr>
+          <tr><th scope="row">Payer mix</th><td>LTC pipeline, private pay &amp; Part B</td><td>50% skilled mix; 8&ndash;10 Medicare daily</td><td>25 skilled of 120</td></tr>
+          <tr><th scope="row">Cash collections</th><td>100%+</td><td>100% monthly (avg 94%, range 78&ndash;109%)</td><td>&gt;100% monthly</td></tr>
+          <tr><th scope="row">Bad debt</th><td>&le;3%</td><td class="gap">no target</td><td>&lt;1% (from 2.05%)</td></tr>
+          <tr><th scope="row">Labor cost</th><td>OT &lt;10% + missed lunches</td><td>Agency $17 &rarr; &lt;$2 WPPD</td><td>OT 14.4% &rarr; &le;10% ($50,200/mo)</td></tr>
+          <tr><th scope="row">Open positions</th><td class="gap">none stated</td><td>1 FT RN, 3 FT CNA, 2 PRN CNA</td><td>3 RN/LPN, 5 CNA</td></tr>
+          <tr><th scope="row">Turnover / retention</th><td class="gap">not addressed</td><td>61% &rarr; &lt;30%; HR started 8/17</td><td class="gap">not addressed</td></tr>
+          <tr><th scope="row">First-impression program</th><td>Welcome book &amp; basket, IDT tuck-in, 72-hour standard, Saturday evals</td><td>Welcome Wagon, gift, orientation, intro to every IDT leader</td><td>Welcome bags</td></tr>
+          <tr><th scope="row">Reputation / stars</th><td>Google 3.8 &rarr; 4.0</td><td class="gap">not addressed</td><td>3-star now; 4-star by Jan 2027 <em>(stub)</em></td></tr>
+          <tr><th scope="row">Expense control</th><td>Vendor/supply audit + spend approval gate</td><td class="gap">not addressed</td><td class="gap">not addressed</td></tr>
+          <tr><th scope="row">Culture / recognition</th><td>Staffer incentive plan</td><td>Little Wins Award, monthly IDT outing, monthly celebration</td><td>Census incentives (DC planner, Admissions)</td></tr>
+          <tr><th scope="row">Structural cost change</th><td>Labs in-house 9/1 ($3&ndash;5K/mo); HSK 5 &rarr; 4</td><td class="gap">none</td><td class="gap">none</td></tr>
+          <tr><th scope="row">Dollarized impact</th><td class="gap">not quantified</td><td class="gap">not quantified</td><td>$245K census + $15K OT + $14K BD</td></tr>
+          <tr><th scope="row">Growth bet</th><td>Peritoneal dialysis clinic</td><td>Admission response &lt;30 min</td><td>3 ALFs marketed per week</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="decide">
+      <p class="eyebrow">Twenty minutes, highest leverage</p>
+      <h3>Decide the definitions before anything else</h3>
+      <p style="color:var(--ink-soft);font-size:.95rem;max-width:70ch;">No cluster tracker works until these match, and the October building has nothing to inherit until they do. Every other decision in the meeting gets easier once these are settled.</p>
+      <ol>
+        <li><strong>Census.</strong> ADC, skilled mix percentage, or both? EPAR and Julia Temple count heads; Littleton counts mix. Pick one primary and one secondary, cluster-wide.</li>
+        <li><strong>Bad debt.</strong> EPAR says &le;3%, Julia Temple says &lt;1%, Littleton has no target. A cluster standard plus building-specific stretch targets.</li>
+        <li><strong>Agency and overtime.</strong> WPPD or dollars per month? Report both, but name which one the tracker grades.</li>
+        <li><strong>Turnover.</strong> Only Littleton measures it. If it stays a one-building metric, the cluster cannot see its own biggest cost driver coming.</li>
+        <li><strong>Every building states a current baseline.</strong> Two of three plans have no starting number. In November, "we improved" is unprovable without one.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="eyebrow">Common threads</p>
+      <h2>Four places to execute as one cluster</h2>
+      <p>Ranked by how much duplicated effort consolidation removes &mdash; and by how directly each one transfers to the October building.</p>
+    </div>
+
+    <div class="threads">
+
+      <article class="thread">
+        <div class="thread-top">
+          <span class="pill">3 of 3 buildings</span>
+          <h3>The first 72 hours</h3>
+        </div>
+        <p>All three buildings independently invented a welcome program, at three different levels of finish, on three separate budgets. This is the single most duplicated effort in the cluster and the easiest thing to standardize, because none of it is building-specific.</p>
+        <dl class="evidence">
+          <div><dt>EPAR</dt><dd>Welcome book and basket, room set up intentionally, IDT and nursing welcome, liaison passes personal detail ahead, Saturday evals so Friday admissions get a real first impression.</dd></div>
+          <div><dt>Littleton</dt><dd>Welcome Wagon on 100% of admissions, welcome gift, facility orientation, introduction to every IDT department leader with their role and contact.</dd></div>
+          <div><dt>Julia Temple</dt><dd>Welcome bags &mdash; while planning to add 18 residents, the largest volume increase in the cluster.</dd></div>
+        </dl>
+        <div class="move">
+          <span class="eyebrow">Move</span>
+          <p>Build one Welcome Standard from EPAR's depth and Littleton's IDT-introduction structure, buy the materials at cluster volume, and hand it to the October building complete on day one. EPAR owns the draft &mdash; and EPAR's argument is the one that funds it everywhere: this is a length-of-stay and day-1-to-3 discharge play, not a hospitality expense.</p>
+        </div>
+      </article>
+
+      <article class="thread">
+        <div class="thread-top">
+          <span class="pill">3 of 3 buildings</span>
+          <h3>100% cash, three different diseases</h3>
+        </div>
+        <p>Every plan names the identical target and every plan already commits to a weekly A/R meeting. But the underlying problem is different in each building, which means the fix is shared expertise rather than a shared push.</p>
+        <dl class="evidence">
+          <div><dt>Littleton &mdash; volatility</dt><dd>Six-month average 94%, but the range is 78% to 109%. The problem is consistency, not effort.</dd></div>
+          <div><dt>Julia Temple &mdash; Medicaid Pending</dt><dd>Bad debt up from a 1.08% annual average to 2.05% over three months, driven by pending volume and slow approvals.</dd></div>
+          <div><dt>EPAR &mdash; already resourced</dt><dd>Weekly A/R with owner, next step, due date and escalation on every at-risk account, plus Joyce Price remote three days a week on allowables, managed-care denials and Medicare billing.</dd></div>
+        </dl>
+        <div class="move">
+          <span class="eyebrow">Move</span>
+          <p>Adopt EPAR's account-level discipline as the cluster A/R agenda &mdash; nothing sits without an owner and a date. Then point EPAR's outside billing expertise at Julia Temple's Medicaid Pending backlog; that is a direct match already sitting inside the cluster. And escalate the approval delay as three buildings, not one: the same slow payer process is costing all of you, and it carries more weight signed three times.</p>
+        </div>
+      </article>
+
+      <article class="thread">
+        <div class="thread-top">
+          <span class="pill">3 of 3 buildings</span>
+          <h3>Fourteen open positions, one pipeline</h3>
+        </div>
+        <p>Overtime at Julia Temple, overtime and missed lunches at EPAR, agency and turnover at Littleton &mdash; three symptoms of one disease. Two of the three already set the identical target of 10% overtime. The hiring needs are complementary rather than competing.</p>
+        <dl class="evidence">
+          <div><dt>Combined open reqs</dt><dd>4 licensed (1 FT RN at Littleton, 3 RN/LPN at Julia Temple) and 10 CNA positions (3 FT + 2 PRN at Littleton, 5 at Julia Temple).</dd></div>
+          <div><dt>The expensive one</dt><dd>Littleton's agency at $17 WPPD is the cluster's largest controllable line, and 61% turnover is its root cause &mdash; a problem the other two have not hit yet.</dd></div>
+          <div><dt>The daily discipline</dt><dd>EPAR manages labor every shift rather than at payroll close, reviewing OT, missed lunches, call-offs, PPD and flex in the daily staffing meeting.</dd></div>
+        </dl>
+        <div class="move">
+          <span class="eyebrow">Move</span>
+          <p>Run one recruiting push against all fourteen positions: one posting, one interview day, one candidate pool, and a shared PRN float list so a strong candidate who doesn't fit one building lands at another instead of being lost. Adopt Littleton's onboarding structure &mdash; competency checklists, return demonstrations, weekly follow-ups &mdash; as the cluster standard, because it is the only retention machinery anyone has built. Treat Littleton's turnover as the cluster's problem; it is the leading indicator of the agency spend the other two want to avoid.</p>
+        </div>
+      </article>
+
+      <article class="thread">
+        <div class="thread-top">
+          <span class="pill">Implicit in all 3</span>
+          <h3>A shared operating rhythm</h3>
+        </div>
+        <p>All three plans commit to a weekly A/R meeting. EPAR and Julia Temple both commit to standing staffing reviews. Nobody has defined the same cadence, the same agenda, or the same tracker &mdash; so today three buildings are building three reporting formats that will not roll up.</p>
+        <dl class="evidence">
+          <div><dt>Already in all three plans</dt><dd>Weekly A/R review.</dd></div>
+          <div><dt>Already in two</dt><dd>Daily staffing and labor review (EPAR, Julia Temple).</dd></div>
+          <div><dt>Only in one</dt><dd>Weekly review of every declined referral, coded by reason &mdash; clinical capability, payer, staffing, equipment, relationship, or speed (EPAR).</dd></div>
+        </dl>
+        <div class="move">
+          <span class="eyebrow">Move</span>
+          <p>Lock one cadence for the cluster: daily staffing huddle, weekly A/R, weekly census and decline review, monthly cluster roll-up on a single tracker. Take EPAR's decline-reason coding cluster-wide &mdash; three buildings coding refusals the same way tells you within a month whether you are losing referrals to capability, to payer, or to speed, which is a diagnosis no single building can produce alone.</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="eyebrow">Presenting the plan</p>
+      <h2>What each administrator should lead with</h2>
+      <p>Three minutes each: where we are, the two or three numbers that matter, and the one thing I need from this room.</p>
+    </div>
+
+    <article class="guide">
+      <div class="guide-head">
+        <h3>EPAR</h3>
+        <p class="thesis">The plan with the most operational detail and the clearest ownership.</p>
+      </div>
+      <div class="guide-body">
+        <div class="block">
+          <p class="eyebrow">Lead with</p>
+          <p class="quote">We are not asking people to spend less. We are changing two cost structures permanently.</p>
+          <p>Labs move in-house on 9/1 at $3&ndash;5K a month saved, with the room, the equipment and the phlebotomy training already scoped. Housekeeping goes from five to four with better evening coverage, not worse. Those savings survive the 100 days; a spending freeze does not. Then the census number: 75+ ADC, supported by the weekly decline review &mdash; the only mechanism in the cluster that tells you <em>why</em> you are not there.</p>
+        </div>
+        <div class="block warn">
+          <p class="eyebrow">Close before you present</p>
+          <ul>
+            <li><strong>There is no people number anywhere in the plan.</strong> No turnover target, no retention goal, no open positions &mdash; while both peers have all three. The room will read the plan as cost-only. Add one workforce metric even if it is modest.</li>
+            <li><strong>Nothing is dollarized except the labs.</strong> Julia Temple's plan lands because every goal carries a figure. Put a monthly dollar value on the housekeeping change, on overtime at 10%, and on missed lunches &mdash; you already have the payroll data.</li>
+          </ul>
+        </div>
+        <div class="block">
+          <p class="eyebrow">Ask the room for</p>
+          <p>Peritoneal dialysis should not be an EPAR-only decision. If it works, it is a cluster referral asset and a reason case managers think of all four buildings. Ask for shared legwork on the DaVita, legal and contracting path &mdash; and ask the other buildings to say now whether they would follow, because that changes whether it is worth the effort.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="guide">
+      <div class="guide-head">
+        <h3>Littleton</h3>
+        <p class="thesis">The only plan that treats people as the strategy rather than a line item.</p>
+      </div>
+      <div class="guide-body">
+        <div class="block">
+          <p class="eyebrow">Lead with</p>
+          <p class="quote">Agency from $17 per patient day to under $2. That is not a purchasing fix. It is a retention fix.</p>
+          <p>This is the biggest single cost swing anywhere in the cluster, and framing it this way turns the culture work &mdash; Little Wins, monthly IDT outings, structured onboarding with HR in seat since 8/17 &mdash; from morale spend into financial strategy. Then be direct about collections: a six-month average of 94% hides a range from 78% to 109%. Present the volatility as the problem you are solving. Consistency is the goal, not the average.</p>
+        </div>
+        <div class="block warn">
+          <p class="eyebrow">Fix before it circulates</p>
+          <ul>
+            <li><strong>Three internal contradictions.</strong> Medicare census reads 8+ in the narrative and 10+ in the metrics table. Turnover reads &lt;30% in the narrative and &lt;20% in the table. Agency reads &lt;$2 WPPD in the narrative and &lt;$2,000/month in the table &mdash; those are different units, not a rounding difference. Pick one of each; a reviewer will find all three.</li>
+            <li><strong>No bad debt target.</strong> Both peers have one.</li>
+            <li><strong>No census baseline and no ADC.</strong> You are the only building without a starting number, which makes progress unprovable in November. Bring today's census and today's agency dollars per month.</li>
+          </ul>
+        </div>
+        <div class="block">
+          <p class="eyebrow">Ask the room for</p>
+          <p>Your onboarding and retention machinery is the most developed in the cluster and the other two buildings have nothing comparable. Offer it as the cluster standard &mdash; then ask them to fund a shared recruiting push against your six open positions plus Julia Temple's eight. You get candidate volume you cannot generate alone, and they get ahead of a turnover problem they have not measured yet.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="guide">
+      <div class="guide-head">
+        <h3>Julia Temple</h3>
+        <p class="thesis">The only plan that shows its math &mdash; and the most persuasive document in the cluster.</p>
+      </div>
+      <div class="guide-body">
+        <div class="block">
+          <p class="eyebrow">Lead with</p>
+          <p class="quote">102 and 16 today. 107/19 in August, 112/21 in September, 118/24 in October, 120/25 in November. That is $245,000 a month.</p>
+          <p>Lead with the ladder, not the destination. Monthly milestones make the plan checkable, which is exactly what a brand-new cluster needs from its largest building. Then the other two numbers, both already dollarized: bad debt from 2% to 1% is $14,000 a month of EBT, overtime from 14.4% to 10% is roughly $15,000 a month. Roughly $274,000 a month identified, with the arithmetic shown. Nobody else in the room can say that.</p>
+        </div>
+        <div class="block">
+          <p class="eyebrow">Present the A/R story as a diagnosis</p>
+          <p>Annual bad debt averages 1.08%; the last three months average 2.05%. The cause is Medicaid Pending volume and slow approvals, not collection effort. Say the cause out loud &mdash; it reframes a bad trend as a solvable process problem, and it is the one A/R issue the cluster can escalate together.</p>
+        </div>
+        <div class="block warn">
+          <p class="eyebrow">Two open items to resolve before the room, not in it</p>
+          <ul>
+            <li><strong>The admissions-risk question.</strong> Your draft asks whether to take all comers and manage the consequences. Walk in with a recommendation and the guardrails you would put around it, not the open question. Owning reportables is the right instinct &mdash; make it the proposal.</li>
+            <li><strong>The star rating section.</strong> A 4-star target by January 2027 with nothing underneath it is the weakest paragraph in an otherwise strong plan. Either bring the IDT detail or present it explicitly as the next 30 days' work with a date attached.</li>
+          </ul>
+        </div>
+        <div class="block warn">
+          <p class="eyebrow">Gaps worth naming yourself</p>
+          <ul>
+            <li>No expense control section at all &mdash; EPAR's vendor and supply audit is the model to borrow.</li>
+            <li>No retention or culture work, while hiring eight people. Littleton's onboarding structure fills this directly.</li>
+            <li>Resident experience is one line while you add 18 residents. Volume without an experience standard is how a new 3-star becomes a liability instead of a marketing asset &mdash; take EPAR's tuck-in program rather than building your own.</li>
+            <li>The file is titled &ldquo;Julia Teple.&rdquo; Fix the spelling before it circulates.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="eyebrow">October</p>
+      <h2>Building the system the fourth building inherits</h2>
+    </div>
+    <div class="closing">
+      <p style="color:var(--ink-soft);max-width:70ch;">A new building opening in October is the reason to standardize now rather than at the end of the 100 days. Everything decided as a cluster standard is something the fourth administrator receives complete instead of rebuilding from scratch in their first month.</p>
+      <ul>
+        <li><strong>Hand over ready:</strong> the Welcome Standard, the weekly A/R agenda and account discipline, the metric dictionary, the shared recruiting pipeline and PRN float list, and one tracker format.</li>
+        <li><strong>Name the coverage now.</strong> All three plans assume full leadership attention through November. An October opening will pull attention, and probably people, out of these buildings at exactly the point where the census ladders and the hiring push are supposed to be delivering. Decide who backfills what before it happens, not after.</li>
+        <li><strong>Watch October specifically.</strong> Julia Temple's plan calls for its steepest census jump in October (112/21 to 118/24), and EPAR's weekend admissions coverage is scheduled to start in October. Those two commitments land in the same month as the opening.</li>
+      </ul>
+    </div>
+  </section>
+
+  <p class="foot">
+    Prepared from the three 100-day action plans as written: EPAR 100-Day Action Plan 2026, Littleton 100 Day Action Plan 2026, Julia Temple 100 Day Action Plan 2026.<br>
+    All figures, baselines and targets are quoted from those documents. Gaps noted are places a plan is silent, not judgments about a building's performance.
+  </p>
+
+</div>
