@@ -176,6 +176,28 @@ figcaption{font-family:Archivo,Arial,sans-serif;font-size:12.5px;color:var(--mut
 
 footer{margin-top:64px;padding-top:22px;border-top:1px solid var(--rule);
   font-family:Archivo,Arial,sans-serif;font-size:13px;color:var(--faint);line-height:1.65}
+
+/* ---- financial additions ---- */
+.bridge-tbl td.num,.bridge-tbl th.num{font-family:"IBM Plex Mono",monospace}
+.scen{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;
+  background:var(--rule);border:1px solid var(--rule);border-radius:3px;overflow:hidden;margin:28px 0}
+.scen-c{background:var(--surface);padding:20px}
+.scen-c.mid{background:var(--accent-soft)}
+.scen-l{font-family:Archivo,Arial,sans-serif;font-size:11px;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--muted);font-weight:600}
+.scen-v{font-family:"IBM Plex Mono",monospace;font-size:27px;font-weight:600;
+  margin-top:10px;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.scen-d{font-family:Archivo,Arial,sans-serif;font-size:12.5px;color:var(--muted);margin-top:7px;line-height:1.45}
+.scen-d b{font-weight:600}
+.hero{background:var(--surface);border:1px solid var(--rule);border-left:3px solid var(--critical);
+  border-radius:3px;padding:26px 28px;margin:30px 0}
+.hero-l{font-family:Archivo,Arial,sans-serif;font-size:11.5px;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--critical);font-weight:600;margin-bottom:12px}
+.hero-n{font-family:"IBM Plex Mono",monospace;font-size:clamp(30px,5vw,42px);font-weight:600;
+  color:var(--ink);letter-spacing:-.025em;line-height:1.05;font-variant-numeric:tabular-nums}
+.hero-p{margin:14px 0 0;font-size:17px;color:var(--ink-2);max-width:660px}
+.gl{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--faint);letter-spacing:.02em}
+.deltapos{color:var(--good)} .deltaneg{color:var(--critical)}
 @media (max-width:620px){
   body{font-size:16px}
   .wrap{padding:0 18px 64px}
@@ -190,182 +212,177 @@ footer{margin-top:64px;padding-top:22px;border-top:1px solid var(--rule);
 <header class="mast">
   <div class="eyebrow">
     <span>Cherrelyn Healthcare Center</span>
-    <span>5555 S Elati St, Littleton CO</span>
-    <span>CCN 020428</span>
-    <span><b>Revision B &middot; 30 Aug 2026</b></span>
+    <span>601ch &middot; Littleton CO</span>
+    <span>TTM Mar 2025 &ndash; Feb 2026</span>
+    <span><b>Revision C &middot; 30 Aug 2026</b></span>
   </div>
   <h1>Cherrelyn 100-Day Plan</h1>
-  <p class="sub">Rebuilt against five due-diligence sources. The building now has the baseline it was missing &mdash; and three of its stated targets do not survive contact with the data.</p>
+  <p class="sub">A financial plan for the Day-1 Part&nbsp;B decision. The compliance call is right &mdash; but the P&amp;L says it costs roughly twice what the model carries, and the skilled census does not yet cover it.</p>
   <div class="mast-meta">
-    <span class="chip">Census &amp; payer mix &middot; Jan 2023 &ndash; Apr 2026</span>
+    <span class="chip">Acquisition P&amp;L &middot; 12 months accrual</span>
+    <span class="chip">EBITDAR bridge &middot; 3 scenarios</span>
     <span class="chip">CO135 case mix &middot; Oct 2025</span>
-    <span class="chip">CMS 2567 &middot; Jan 2025</span>
-    <span class="chip">Vendor ledger &middot; Aug 2025 &ndash; Aug 2026</span>
-    <span class="chip">Therapy caseload</span>
-    <span class="chip hot">Survey window open</span>
+    <span class="chip">Census &middot; 40 months</span>
+    <span class="chip hot">Part B run-rate revised</span>
   </div>
 </header>
 
-<section id="identity">
-  <div class="sec-h"><span class="sec-n">01</span><h2>First, the naming</h2></div>
-  <div class="col">
-    <p>The cluster work filed this building as <strong>&ldquo;Littleton.&rdquo;</strong> The CMS 2567 resolves it: <strong>Cherrelyn Healthcare Center, 5555 S Elati St, Littleton, Colorado 80120</strong>, provider number 020428. Same building, two names &mdash; the plan was indexed by city, the diligence by facility.</p>
-    <p>That matters beyond bookkeeping. The therapy caseload places Cherrelyn in a <strong>seven-building</strong> group &mdash; Cedars, Cherrelyn, LaVilla, Mantey, Skyline, Springs Village, Willow Tree &mdash; which is not the three-building cluster the earlier plan was written against. Cherrelyn carries 24 skilled and 38 long-term-care patients on the therapy caseload, the largest skilled load of the seven. Before this plan is presented, confirm which peer set it is being compared to.</p>
+<section id="position">
+  <div class="sec-h"><span class="sec-n">01</span><h2>Where the building starts</h2></div>
+  <p class="lede">Twelve months of accrual P&amp;L, Mar 2025 through Feb 2026. This is the baseline every number in this plan bridges from.</p>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-l">Total revenue</div>
+      <div class="stat-v">$24.2<small>M</small></div>
+      <div class="stat-d">Room &amp; board <b>$21.8M</b> &middot; ancillary net <b>$1.9M</b></div>
+    </div>
+    <div class="stat">
+      <div class="stat-l">Operating expense</div>
+      <div class="stat-v">$20.3<small>M</small></div>
+      <div class="stat-d">83.9% of revenue &middot; nursing <b>$14.6M</b></div>
+    </div>
+    <div class="stat">
+      <div class="stat-l">EBITDAR</div>
+      <div class="stat-v">$2.62<small>M</small></div>
+      <div class="stat-d">10.8% margin &middot; the rent-coverage pool</div>
+    </div>
+    <div class="stat">
+      <div class="stat-l">Adjusted EBITDA</div>
+      <div class="stat-v">$3.91<small>M</small></div>
+      <div class="stat-d">Before the <b>$1.29M</b> management fee</div>
+    </div>
+    <div class="stat">
+      <div class="stat-l">Medicaid share of R&amp;B</div>
+      <div class="stat-v">83.0<small>%</small></div>
+      <div class="stat-d">Skilled mix <b>7.8%</b> of census days</div>
+    </div>
+    <div class="stat">
+      <div class="stat-l">Occupancy</div>
+      <div class="stat-v">95.5<small>%</small></div>
+      <div class="stat-d">ADC <b>178.5</b> (Mar 26) &middot; 190 licensed beds</div>
+    </div>
   </div>
+  <p>Occupancy is not the problem and has not been for two years. Every dollar in this plan comes from what sits inside that census &mdash; payer mix, coding accuracy, and the cost of the labor that staffs it.</p>
 </section>
 
-<section id="changed">
-  <div class="sec-h"><span class="sec-n">02</span><h2>What the diligence changed</h2></div>
-  <p class="lede">The earlier brief flagged Cherrelyn as the only building without a starting number. It now has one &mdash; and the numbers retire two targets and confirm a third is already met.</p>
+<section id="partb">
+  <div class="sec-h"><span class="sec-n">02</span><h2>The Day-1 decision, repriced</h2></div>
+  <p class="lede">Stopping Part&nbsp;B respiratory billing is the right compliance call. The P&amp;L changes what it costs.</p>
+
+  <div class="col">
+    <p>The model prices the exit off the trailing twelve months: <span class="gl">4543-0040</span> billed <strong>$1,742,597</strong> gross, and at a 42.2% realization that is <strong>$735,376</strong> of net revenue forgone. Both figures check out against the general ledger &mdash; blended Part&nbsp;B realization is stable at 42.1&ndash;42.3% across both halves of the year, so the rate is sound.</p>
+    <p>The <em>basis</em> is not. That line is accelerating hard.</p>
+  </div>
+
+  <figure>
+    <div class="fig-h">Part B respiratory billing tripled in five months</div>
+    <div class="fig-s">Gross charges, account 4543-0040, Mar 2025 &ndash; Feb 2026.</div>
+    <div class="chart" id="c-pb"><div class="tip" id="t-pb"></div></div>
+    <figcaption>September 2025 billed $93,700. February 2026 billed $284,775 &mdash; three times as much, in five months, with no corresponding change in census. The trailing-twelve-month average sits at $145,216 a month, which is a number the building has not seen since December. Pricing the exit off that average prices a business that no longer exists.</figcaption>
+  </figure>
+
+  <div class="hero">
+    <div class="hero-l">What the exit actually costs</div>
+    <div class="hero-n">$1,324,552 <span style="font-size:.5em;color:var(--muted);font-weight:400">net revenue forgone, at the Jan&ndash;Feb run-rate</span></div>
+    <p class="hero-p">Against the model&rsquo;s $735,376. The exit is <strong>$589,176</strong> more expensive than carried &mdash; a gap larger than the entire overtime lever. Annualizing the last three months rather than two still lands at $1,141,679.</p>
+  </div>
+
+  <div class="col">
+    <p>A line that triples in five months is also the pattern that draws a Medicare probe, so the acceleration argues for the exit and raises its cost at the same time. That is the honest framing for the room: the decision gets easier and the arithmetic gets harder.</p>
+    <p>One scope question follows. Respiratory is <strong>59%</strong> of the Part&nbsp;B book, not all of it &mdash; PT, OT and speech bill another <strong>$1,198,390</strong> gross, worth about <strong>$505,700</strong> net at the same realization. If the compliance concern is respiratory specifically, that revenue stays. If it is Part&nbsp;B billing generally, the exposure is roughly 1.7&times; what this plan carries. Settle that before Day 1 rather than after.</p>
+  </div>
+</section>
+<section id="bridge">
+  <div class="sec-h"><span class="sec-n">03</span><h2>The EBITDAR bridge</h2></div>
+  <p class="lede">Same levers as the original model. Part&nbsp;B restated to the run-rate, skilled mix restated to what the census file already shows, and one lever added.</p>
+
+  <figure>
+    <div class="fig-h">From $2.62M to $2.56M &mdash; the Base case walk</div>
+    <div class="fig-s">Annual EBITDAR, TTM baseline to pro forma. Part B priced at the Jan&ndash;Feb run-rate.</div>
+    <div class="chart" id="c-wf"><div class="tip" id="t-wf"></div></div>
+    <figcaption>The Part B exit is a $1.32M hole. Winding down respiratory therapy labor fills $250K of it; overtime discipline another $250K; holding three-quarters of the skilled census the building has already won, $612K; case-mix capture, $157K. Base lands at $2.56M &mdash; essentially flat to today, and $200K below what the original model projected.</figcaption>
+  </figure>
+
+  <div class="scen">
+    <div class="scen-c">
+      <div class="scen-l">Conservative</div>
+      <div class="scen-v">$2.24<small>M</small></div>
+      <div class="scen-d"><b class="deltaneg">&minus;$375K</b> vs baseline<br>3-month Part B basis · no case-mix credit · half the skilled census held</div>
+    </div>
+    <div class="scen-c mid">
+      <div class="scen-l">Base</div>
+      <div class="scen-v">$2.56<small>M</small></div>
+      <div class="scen-d"><b class="deltaneg">&minus;$55K</b> vs baseline<br>Run-rate Part B · $250K overtime · 75% of skilled held</div>
+    </div>
+    <div class="scen-c">
+      <div class="scen-l">Upside</div>
+      <div class="scen-v">$3.05<small>M</small></div>
+      <div class="scen-d"><b class="deltapos">+$433K</b> vs baseline<br>All four levers at full value</div>
+    </div>
+  </div>
+
   <div class="scroll">
-    <table>
+    <table class="bridge-tbl">
       <thead><tr>
-        <th>Metric</th><th>Stated in plan</th><th>What the data shows</th><th>Verdict</th>
+        <th>Driver</th><th class="num">Conservative</th><th class="num">Base</th><th class="num">Upside</th><th>Basis</th>
       </tr></thead>
       <tbody>
-        <tr>
-          <td><strong>Census baseline</strong></td>
-          <td class="was">Not stated</td>
-          <td><strong>ADC 178.5</strong>, 95.5% occupancy (Mar 2026); ADC 174.4 / 93.2% over the last six reported months</td>
-          <td><span class="tag t-good">Resolved</span></td>
-        </tr>
-        <tr>
-          <td><strong>Skilled mix</strong></td>
-          <td class="was">50%</td>
-          <td><strong>12.3%</strong> of census days YTD 2026 &mdash; the best three-month run in the file. The 40-month high is 13.6%</td>
-          <td><span class="tag t-crit">Retire</span></td>
-        </tr>
-        <tr>
-          <td><strong>Medicare daily census</strong></td>
-          <td class="was">8&ndash;10</td>
-          <td><strong>16.3/day</strong> (Mar 2026), up from a 2.4/day trough in Nov 2025</td>
-          <td><span class="tag t-good">Already met</span></td>
-        </tr>
-        <tr>
-          <td><strong>Private pay</strong></td>
-          <td class="was">Not addressed</td>
-          <td>Down <strong>19.9%</strong> since 2023 &mdash; 400 &rarr; 320 days/month, 264 YTD 2026. Share fell 7.99% &rarr; 4.94%</td>
-          <td><span class="tag t-crit">New &mdash; add</span></td>
-        </tr>
-        <tr>
-          <td><strong>Medicaid case mix</strong></td>
-          <td class="was">Not addressed</td>
-          <td>Average index <strong>1.7143</strong> across 162 residents; 22.2% sit below 1.20</td>
-          <td><span class="tag t-crit">New &mdash; add</span></td>
-        </tr>
-        <tr>
-          <td><strong>Survey standing</strong></td>
-          <td class="was">Not addressed</td>
-          <td>Five tags on the Jan 2025 recert &mdash; four at D, <strong>F880 infection control at E</strong>. Next annual survey is 19 months out and overdue</td>
-          <td><span class="tag t-crit">New &mdash; add</span></td>
-        </tr>
-        <tr>
-          <td><strong>Cash collections</strong></td>
-          <td>100% monthly (6-mo avg 94%)</td>
-          <td>No collections data in this diligence set</td>
-          <td><span class="tag t-neut">Carried</span></td>
-        </tr>
-        <tr>
-          <td><strong>Agency spend</strong></td>
-          <td>$17 &rarr; &lt;$2 WPPD</td>
-          <td>No agency invoices in this diligence set</td>
-          <td><span class="tag t-neut">Carried</span></td>
-        </tr>
-        <tr>
-          <td><strong>Turnover</strong></td>
-          <td>61% &rarr; &lt;30%</td>
-          <td>No HR data in this diligence set</td>
-          <td><span class="tag t-neut">Carried</span></td>
-        </tr>
+        <tr><td><strong>Baseline EBITDAR</strong></td>
+          <td class="num">$2,616,869</td><td class="num">$2,616,869</td><td class="num">$2,616,869</td>
+          <td>TTM per P&amp;L</td></tr>
+        <tr><td>Part B respiratory forgone</td>
+          <td class="num">($1,141,679)</td><td class="num">($1,324,552)</td><td class="num">($1,324,552)</td>
+          <td>3-month / run-rate gross &times; 42.2%</td></tr>
+        <tr><td>Respiratory therapy labor offset</td>
+          <td class="num">$208,391</td><td class="num">$250,069</td><td class="num">$277,854</td>
+          <td>60 / 72 / 80% of <span class="gl">5113</span> $347,318</td></tr>
+        <tr><td>Overtime reduction</td>
+          <td class="num">$150,000</td><td class="num">$250,000</td><td class="num">$350,000</td>
+          <td>11 / 18 / 26% of the $1.36M OT base</td></tr>
+        <tr><td>Skilled mix &mdash; hold the recovery</td>
+          <td class="num">$408,070</td><td class="num">$612,105</td><td class="num">$816,140</td>
+          <td>50 / 75 / 100% of +8.6 ADC already won</td></tr>
+        <tr><td>Medicaid case-mix capture</td>
+          <td class="num">&mdash;</td><td class="num">$156,977</td><td class="num">$313,954</td>
+          <td>+0.05 CMI illustrative &mdash; unconfirmed rate</td></tr>
+        <tr><td><strong>Pro forma EBITDAR</strong></td>
+          <td class="num"><strong>$2,241,651</strong></td><td class="num"><strong>$2,561,467</strong></td><td class="num"><strong>$3,050,265</strong></td>
+          <td>&mdash;</td></tr>
+        <tr><td>Original model, same case</td>
+          <td class="num">$2,429,684</td><td class="num">$2,761,162</td><td class="num">$3,078,747</td>
+          <td>TTM Part B basis</td></tr>
+        <tr><td><strong>Difference</strong></td>
+          <td class="num"><strong class="deltaneg">($188,033)</strong></td><td class="num"><strong class="deltaneg">($199,695)</strong></td><td class="num"><strong class="deltaneg">($28,482)</strong></td>
+          <td>Effect of repricing Part B</td></tr>
       </tbody>
     </table>
   </div>
 
   <div class="note crit">
-    <div class="note-h">The 50% skilled-mix target</div>
-    <p>Cherrelyn has never been above <strong>13.6%</strong> skilled in forty months of census data. A 50% target is not a stretch goal against that record &mdash; it is a different denominator. The likeliest reading is the therapy caseload, where 24 of 62 patients (38.7%) are skilled.</p>
-    <p>This is the same defect the original brief caught in the agency and turnover lines: a number stated without its unit. Fix the denominator before the plan is presented, or the building will be measured against a target it cannot reach.</p>
+    <div class="note-h">The number to walk in with</div>
+    <p>At the true run-rate, offsetting the Part&nbsp;B exit on skilled census alone takes <strong>11.3 additional skilled residents per day</strong>. The building has already won <strong>8.6</strong> &mdash; a genuinely strong result that, under the original TTM math, would have covered the exit nearly twice over.</p>
+    <p>It no longer does. The gap is <strong>2.7 ADC</strong>, about <strong>$258,000</strong> a year. That gap is what overtime and case-mix capture exist to close, and it is why this plan cannot rely on a single lever.</p>
   </div>
 </section>
-<section id="baseline">
-  <div class="sec-h"><span class="sec-n">03</span><h2>The baseline, established</h2></div>
-  <p class="lede">Forty months of census and payer data. Occupancy is the building&rsquo;s clear win; the payer mix underneath it is where the margin has been leaking.</p>
 
-  <div class="stats">
-    <div class="stat">
-      <div class="stat-l">Occupancy</div>
-      <div class="stat-v">95.5<small>%</small></div>
-      <div class="stat-d">Mar 2026 &middot; <b class="up">up from 83.1%</b> in Jan 2023</div>
-    </div>
-    <div class="stat">
-      <div class="stat-l">Average daily census</div>
-      <div class="stat-v">178.5</div>
-      <div class="stat-d">Mar 2026 &middot; <b class="up">+24.9</b> over three years</div>
-    </div>
-    <div class="stat">
-      <div class="stat-l">Skilled mix</div>
-      <div class="stat-v">12.3<small>%</small></div>
-      <div class="stat-d">2026 YTD &middot; <b class="up">recovered</b> from 4.4% in Jan 2025</div>
-    </div>
-    <div class="stat">
-      <div class="stat-l">Private-pay days</div>
-      <div class="stat-v">264<small>/mo</small></div>
-      <div class="stat-d">2026 YTD &middot; <b class="dn">&minus;34%</b> against 2023</div>
-    </div>
-    <div class="stat">
-      <div class="stat-l">Medicaid share</div>
-      <div class="stat-v">82.7<small>%</small></div>
-      <div class="stat-d">2026 YTD &middot; peaked at <b>90.1%</b> in Nov 2025</div>
-    </div>
-    <div class="stat">
-      <div class="stat-l">Case mix index</div>
-      <div class="stat-v">1.714</div>
-      <div class="stat-d">162 residents &middot; <b>22.2%</b> below 1.20</div>
-    </div>
-  </div>
-
-  <figure>
-    <div class="fig-h">Occupancy has climbed twelve points and held</div>
-    <div class="fig-s">Monthly occupancy, Jan 2023 &ndash; Apr 2026. Census days &divide; licensed capacity days.</div>
-    <div class="chart" id="c-occ"><div class="tip" id="t-occ"></div></div>
-    <figcaption>The building solved volume. Occupancy crossed 90% in late 2023 and has not meaningfully retreated since &mdash; it sits at 95.0% in the most recent month. Every remaining opportunity in this plan is about the composition and coding of that census, not its size.</figcaption>
-  </figure>
-
-  <figure>
-    <div class="fig-h">The three payers that actually move</div>
-    <div class="fig-s">Non-Medicaid share of monthly census days, Jan 2023 &ndash; Mar 2026. Medicaid is the balance and runs off the top of this scale.</div>
-    <div class="legend">
-      <span><i class="sw" style="background:var(--s2)"></i>Medicare</span>
-      <span><i class="sw" style="background:var(--s3)"></i>Managed Medicare</span>
-      <span><i class="sw" style="background:var(--s4)"></i>Private</span>
-    </div>
-    <div class="chart" id="c-mix"><div class="tip" id="t-mix"></div></div>
-    <figcaption>Charted against a 25% ceiling because that is where all the movement lives &mdash; Medicaid occupies the other four-fifths of every column and is shown in the tooltip as the balance. Two things are happening. Skilled recovered hard through early 2026: Medicare alone went from 2.4 residents a day in Nov 2025 to 16.3 in Mar 2026. Private pay, the top band, has thinned steadily for three years with no inflection. &ldquo;Other&rdquo; days, under 0.5% throughout, are omitted. April 2026 carries a census total but no payer split in the source file.</figcaption>
-  </figure>
-
-  <div class="note acc">
-    <div class="note-h">Read the two trends together</div>
-    <p>Skilled recovery and private-pay erosion are pulling in opposite directions on the same census. Since Jan 2026 the building has added roughly six points of skilled mix &mdash; worth more per day than anything else in this plan &mdash; while private pay quietly gave up three points over three years. Protecting the first and arresting the second are separate jobs with separate owners.</p>
-  </div>
-</section>
-<section id="workstreams">
-  <div class="sec-h"><span class="sec-n">04</span><h2>Six workstreams</h2></div>
-  <p class="lede">Ordered by urgency, not by size. The first is time-boxed by a regulator; the next three are the margin.</p>
+<section id="levers">
+  <div class="sec-h"><span class="sec-n">04</span><h2>Four levers, priced</h2></div>
+  <p class="lede">Each carries a dollar value, an owner, and the account it comes out of.</p>
 
   <div class="ws">
 
     <div class="ws-item">
       <div class="ws-r crit">1</div>
       <div class="ws-b">
-        <div class="ws-t">Survey readiness <span class="tag t-crit">Window open now</span></div>
-        <p class="ws-p">The last recertification survey closed <strong>30 Jan 2025</strong>. Standard recert intervals run 9&ndash;15 months; Cherrelyn is at <strong>19</strong>. A survey team can arrive any morning, and the plan should assume it happens inside the 100 days rather than after them.</p>
-        <p class="ws-p">Five tags were cited &mdash; F679 activities, F685 vision devices, F693 tube feeding, F849 hospice care plans, all at scope/severity D, plus <strong>F880 infection prevention at E</strong>, the only pattern-level finding. F880 is the exposure: it cited staff not wearing gowns and gloves for a resident on enhanced barrier precautions, and residents not offered hand hygiene before meals. Both are observable in the first hour of any survey.</p>
-        <p class="ws-p">The accepted plan of correction committed to DON audits weekly &times; 3 then monthly &times; 2. That cycle ended in mid-2025. Reinstate it now, and treat the four D-tags as a mock-survey checklist rather than closed items &mdash; F849 in particular was a documentation failure (hospice plan of care not integrated into the facility care plan) that recurs quietly.</p>
+        <div class="ws-t">Exit Part B respiratory <span class="tag t-crit">Day 1</span></div>
+        <p class="ws-p">Stop billing <span class="gl">4543-0040</span> at close. Medically necessary respiratory care continues for Part&nbsp;A and skilled residents, bundled under PDPM &mdash; that is $599,491 of gross respiratory revenue on the Part&nbsp;A line that is unaffected because it was never separately collected.</p>
+        <p class="ws-p">Wind down respiratory therapy labor against the 72% of respiratory revenue that Part&nbsp;B represented. Retained staff serve the skilled census, which is growing. Budget the wind-down cost &mdash; severance is not in this bridge.</p>
         <div class="ws-m">
-          <span class="pill">Owner <b>NHA + DON</b></span>
-          <span class="pill">Day <b>0&ndash;30</b></span>
-          <span class="pill">Target <b>Mock survey complete by day 21</b></span>
-          <span class="pill">Prior tags <b>F679 F685 F693 F849 F880</b></span>
+          <span class="pill">Owner <b>NHA + Regional</b></span>
+          <span class="pill">Day <b>1</b></span>
+          <span class="pill">EBITDAR <b>($1.07M) net of RT offset</b></span>
+          <span class="pill">Decide <b>Therapy Part B in or out</b></span>
         </div>
       </div>
     </div>
@@ -373,15 +390,14 @@ footer{margin-top:64px;padding-top:22px;border-top:1px solid var(--rule);
     <div class="ws-item">
       <div class="ws-r">2</div>
       <div class="ws-b">
-        <div class="ws-t">Medicaid case-mix capture</div>
-        <p class="ws-p">The October 2025 CO135 listing carries <strong>162 residents at an average index of 1.7143</strong>; the 151 Medicaid residents average 1.7001. Thirty-six residents &mdash; <strong>22.2%</strong> &mdash; sit below a 1.20 index, clustered in four codes: V (1.19, n=24), X (1.10, n=7), S (0.96, n=3) and R (1.01, n=2).</p>
-        <p class="ws-p">With Medicaid at 93% of the listing and roughly <strong>4,417 Medicaid days a month</strong>, the case-mix index is the largest single reimbursement lever in this plan. Assessment timing is not the problem &mdash; mean assessment age is 44 days and nothing on the listing exceeds 90. The question is capture: whether ADL and Section GG scoring, restorative nursing programs, depression and behavior coding reflect the care actually delivered to those 36 residents.</p>
-        <p class="ws-p">Audit that low-index cohort resident by resident against the chart. Where documentation supports a higher classification, the correction flows through the next assessment cycle; where it does not, the finding is a care-planning gap worth closing on its own terms.</p>
+        <div class="ws-t">Hold the skilled census</div>
+        <p class="ws-p">Skilled ADC ran <strong>13.4</strong> across the P&amp;L year and is <strong>22.0</strong> in 2026 Q1 &mdash; Medicare A room and board went from $23,170 in November to $188,405 in February. The recovery is real, recent, and already past the Upside assumption in the original model.</p>
+        <p class="ws-p">Which makes this a retention job, not a growth job. Find what changed &mdash; a referral relationship, a discharge planner, a hospital contract &mdash; and institutionalize it before the person who did it leaves. Every ADC held is worth about $94,900 a year at model assumptions.</p>
         <div class="ws-m">
-          <span class="pill">Owner <b>DON + MDS coordinator</b></span>
-          <span class="pill">Day <b>0&ndash;60</b></span>
-          <span class="pill">Target <b>+0.05 index on the Medicaid cohort</b></span>
-          <span class="pill">Cohort <b>36 residents under 1.20</b></span>
+          <span class="pill">Owner <b>Admissions + NHA</b></span>
+          <span class="pill">Day <b>0&ndash;45</b></span>
+          <span class="pill">EBITDAR <b>$408K &ndash; $816K</b></span>
+          <span class="pill">Held <b>+8.6 ADC vs P&amp;L year</b></span>
         </div>
       </div>
     </div>
@@ -389,14 +405,15 @@ footer{margin-top:64px;padding-top:22px;border-top:1px solid var(--rule);
     <div class="ws-item">
       <div class="ws-r">3</div>
       <div class="ws-b">
-        <div class="ws-t">Hold the skilled recovery</div>
-        <p class="ws-p">Skilled mix ran 6.5% through 2025 and bottomed at 4.4% in January. It is <strong>12.3% year to date in 2026</strong>, peaking at 13.6% in February &mdash; Medicare daily census went from 2.4 to 16.3 in five months. This is the single best trend in the building and it is only three months old.</p>
-        <p class="ws-p">Three months is not yet a system. Find out what changed &mdash; a referral relationship, a discharge planner, a marketing hire, a hospital contract &mdash; and write it down before the person who did it moves on. AdventHealth Littleton and AdventHealth Porter both appear in the vendor ledger and are the obvious referral sources to formalize.</p>
+        <div class="ws-t">Overtime <span class="tag t-warn">5.8&times; bigger than the plan said</span></div>
+        <p class="ws-p">The original plan named director overtime of $234,288. That is real &mdash; and it is <strong>16%</strong> of the problem. Building-wide overtime is <strong>$1,355,761</strong>, which is 11.5% of worked payroll; the nursing subset is 15.6%. Both percentages match what the plan stated, but the dollar base was never shown.</p>
+        <p class="ws-p">CNA overtime alone is <strong>$452,339</strong>, a third of the total and the largest single line in the building. The recoverable premium across all departments is roughly $452,000, so the Base case asks for a little over half of it.</p>
+        <p class="ws-p">There is no agency or contract-nursing account anywhere in the ledger. Overtime <em>is</em> how this building flexes &mdash; which means schedule rebuilding and vacancy filling are the only levers, and cutting overtime without filling positions will simply reappear as agency spend under new ownership.</p>
         <div class="ws-m">
-          <span class="pill">Owner <b>Admissions + NHA</b></span>
-          <span class="pill">Day <b>0&ndash;45</b></span>
-          <span class="pill">Target <b>Hold &ge;12% through the plan window</b></span>
-          <span class="pill">Baseline <b>12.3% YTD</b></span>
+          <span class="pill">Owner <b>DON + HR</b></span>
+          <span class="pill">Day <b>0&ndash;60</b></span>
+          <span class="pill">EBITDAR <b>$150K &ndash; $350K</b></span>
+          <span class="pill">Base <b>$1.36M across 24 accounts</b></span>
         </div>
       </div>
     </div>
@@ -404,227 +421,306 @@ footer{margin-top:64px;padding-top:22px;border-top:1px solid var(--rule);
     <div class="ws-item">
       <div class="ws-r">4</div>
       <div class="ws-b">
-        <div class="ws-t">Arrest private-pay erosion</div>
-        <p class="ws-p">Private-pay days fell from <strong>400 a month in 2023 to 320 in 2025</strong>, and 264 year to date &mdash; a 19.9% decline over two full years with no month that breaks the trend. As a share of census it went 7.99% &rarr; 4.94%.</p>
-        <p class="ws-p">This is the quietest number in the file because occupancy hid it: the building backfilled every lost private day with a Medicaid day and the census line never moved. Diagnose it before setting a target &mdash; whether it is referral-source drift, a rate position that no longer competes locally, or private residents converting to Medicaid faster than they used to.</p>
+        <div class="ws-t">Medicaid case-mix capture <span class="tag t-neut">New lever</span></div>
+        <p class="ws-p">Not in the original model. The October CO135 listing shows <strong>162 residents at a 1.7143 average index</strong>, with <strong>36 of them &mdash; 22.2% &mdash; below a 1.20 index</strong>. Against 54,326 Medicaid days a year, index is the largest rate lever in the building.</p>
+        <p class="ws-p">MDS RN labor is <strong>$12,399</strong> for the year against a $20M+ Medicaid book. Assessment timing is not the issue &mdash; mean assessment age is 44 days and nothing exceeds 90. Capture is: whether ADL and Section GG scoring, restorative programs and behavior coding reflect the care actually delivered.</p>
+        <p class="ws-p">The $157K in the Base case is an illustration at +0.05 index, not a commitment. It needs the Colorado nursing-component rate to firm up, and that rate is not in the diligence set.</p>
         <div class="ws-m">
-          <span class="pill">Owner <b>NHA + business office</b></span>
-          <span class="pill">Day <b>30&ndash;100</b></span>
-          <span class="pill">Target <b>Stabilize at &ge;300 days/mo</b></span>
-          <span class="pill">Trend <b>&minus;80 days/mo vs 2023</b></span>
+          <span class="pill">Owner <b>DON + MDS</b></span>
+          <span class="pill">Day <b>0&ndash;60</b></span>
+          <span class="pill">EBITDAR <b>$0 &ndash; $314K illustrative</b></span>
+          <span class="pill">Cohort <b>36 residents under 1.20</b></span>
         </div>
       </div>
     </div>
 
-    <div class="ws-item">
-      <div class="ws-r">5</div>
-      <div class="ws-b">
-        <div class="ws-t">Workforce <span class="tag t-warn">Carried &mdash; unverified</span></div>
-        <p class="ws-p">The original plan&rsquo;s strongest section, and the one this diligence set cannot touch. It commits to turnover from 61% to under 30% and agency from $17 to under $2 per patient day. <strong>No HR, payroll or agency data was provided</strong>, so both numbers remain as stated, unconfirmed.</p>
-        <p class="ws-p">Keep the workstream and its owner. Before presenting, resolve the unit mismatch the earlier brief caught &mdash; agency stated as &ldquo;&lt;$2 WPPD&rdquo; in the narrative and &ldquo;&lt;$2,000/month&rdquo; in the metrics table are different commitments by a factor of about eighty.</p>
-        <div class="ws-m">
-          <span class="pill">Owner <b>HR + DON</b></span>
-          <span class="pill">Day <b>0&ndash;100</b></span>
-          <span class="pill">Target <b>As stated, pending data</b></span>
-          <span class="pill">Blocked on <b>HR + agency invoices</b></span>
-        </div>
-      </div>
-    </div>
+  </div>
 
-    <div class="ws-item">
-      <div class="ws-r">6</div>
-      <div class="ws-b">
-        <div class="ws-t">Payables hygiene</div>
-        <p class="ws-p">The vendor ledger carries <strong>227 active payees</strong> against property 601ch. Three things are worth an afternoon: <strong>68% of payees are still paid by paper check</strong> where 32% are on EFT; <strong>73 payees</strong> are one-off resident-refund records rather than real vendors, and 47 more carry no assigned GL account; and eight name clusters look like duplicate records for a single vendor &mdash; Sherwin Williams appears three times, TrueCare24, National DataCare, J. Schramm, Standard Textiles and AlphaGraphics twice each.</p>
-        <p class="ws-p">Not a margin item. It is a controls item, and it is the cheapest credibility win available before an owner review.</p>
-        <div class="ws-m">
-          <span class="pill">Owner <b>Business office</b></span>
-          <span class="pill">Day <b>30&ndash;60</b></span>
-          <span class="pill">Target <b>Dedupe 8 clusters, EFT &ge;60%</b></span>
-          <span class="pill">Scope <b>227 payees</b></span>
-        </div>
-      </div>
-    </div>
+  <figure>
+    <div class="fig-h">Where the overtime actually sits</div>
+    <div class="fig-s">Annual overtime by department, TTM. Departments above $30,000.</div>
+    <div class="chart" id="c-ot"><div class="tip" id="t-ot"></div></div>
+    <figcaption>Director overtime, the only line the original plan named, is the third bar. The floor &mdash; CNA, RN and LPN together &mdash; carries $866,519, roughly two-thirds of the building total. A schedule rebuild that does not reach the CNA line does not reach the money.</figcaption>
+  </figure>
+</section>
+<section id="risks">
+  <div class="sec-h"><span class="sec-n">05</span><h2>What can take the bridge apart</h2></div>
+  <p class="lede">Four risks, priced where the data allows. None of them are in the model.</p>
+  <div class="scroll">
+    <table>
+      <thead><tr><th>Risk</th><th class="num">Annual exposure</th><th>What it does to the bridge</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Private-pay erosion</strong><br><span class="gl">4210-0005</span></td>
+          <td class="num">($514,000)</td>
+          <td>Private days fell from 4,795 in CY2023 to 3,529 across the P&amp;L year &mdash; 1,266 days at a $406 implied rate. Occupancy hid it completely: every lost private day was backfilled with Medicaid. Still running.</td>
+        </tr>
+        <tr>
+          <td><strong>Survey exposure</strong><br>CMS 2567, 1/30/25</td>
+          <td class="num">Census risk</td>
+          <td>Five tags, four at D plus <strong>F880 infection control at scope E</strong>. Recertification is 19 months out against a 9&ndash;15 month cycle &mdash; overdue. An admissions hold would hit the skilled census the whole bridge leans on.</td>
+        </tr>
+        <tr>
+          <td><strong>Bad debt</strong><br><span class="gl">5090-4999</span></td>
+          <td class="num">($442,677)</td>
+          <td>1.8% of revenue, and Medicare A room and board carries a further $98,314 of bad-debt coinsurance netted against it. Both grow if the Medicaid-pending backlog is not worked.</td>
+        </tr>
+        <tr>
+          <td><strong>Rate assumption</strong><br>Model input B18</td>
+          <td class="num">Up to ($816,000)</td>
+          <td>The skilled lever assumes a $400/day Medicare-to-Medicaid differential. Dividing P&amp;L revenue by census days implies $383 Medicare A against $393 Medicaid &mdash; near zero. Both figures are distorted (a Medicaid settlement lump, bad-debt netting), but until real rates are confirmed the single largest lever is unverified.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
+  <div class="note crit">
+    <div class="note-h">Reconcile before presenting</div>
+    <p>The facility profile reports turnover of <strong>37.4%</strong>, below the 44.4% national average. The prior 100-day plan reports <strong>61%</strong>. Those cannot both be true, and the overtime case rests on which one is. A building at 37% turnover with $1.36M of overtime has a scheduling problem; a building at 61% has a retention problem, and they take different money and different time to fix.</p>
   </div>
 </section>
 
 <section id="phasing">
-  <div class="sec-h"><span class="sec-n">05</span><h2>How the hundred days run</h2></div>
-  <p class="lede">The sequence is forced by the survey window: everything a surveyor could observe happens first.</p>
+  <div class="sec-h"><span class="sec-n">06</span><h2>The hundred days</h2></div>
+  <p class="lede">Sequenced by cash impact. The Part&nbsp;B hole opens on Day 1, so the offsets cannot wait for Day 60.</p>
   <div class="phase">
     <div class="ph">
       <div class="dw">Day 0 &ndash; 30</div>
-      <h3>Survey posture and the baseline</h3>
+      <h3>Stop the billing, protect the census</h3>
       <ul>
-        <li>Reinstate the F880 audit cycle &mdash; enhanced barrier precautions and pre-meal hand hygiene, DON audit weekly</li>
-        <li>Full mock survey against all five prior tags, complete by day 21</li>
-        <li>Pull the 36 low-index residents and open the chart audit</li>
-        <li>Fix the skilled-mix denominator and restate the target</li>
-        <li>Request the four missing data sets in section 06</li>
+        <li>Part B respiratory billing stops at close; scope decision on therapy Part B made in writing</li>
+        <li>Respiratory therapy wind-down plan with severance costed &mdash; not in this bridge</li>
+        <li>Document what drove the skilled recovery and lock the referral relationships behind it</li>
+        <li>Reinstate the F880 audit cadence; mock survey by day 21</li>
+        <li>Confirm real Medicare and Medicaid per diems &mdash; the $400 differential is the bridge&rsquo;s biggest unverified input</li>
+        <li>Reconcile the turnover conflict against payroll records</li>
       </ul>
     </div>
     <div class="ph">
       <div class="dw">Day 31 &ndash; 60</div>
-      <h3>Capture and controls</h3>
+      <h3>Close the 2.7 ADC gap</h3>
       <ul>
-        <li>Case-mix corrections flow through the assessment cycle</li>
-        <li>Document what drove the skilled recovery; formalize the referral relationships behind it</li>
-        <li>Private-pay diagnosis complete &mdash; cause named before a target is set</li>
-        <li>Vendor dedupe and EFT conversion</li>
-        <li>Workforce numbers verified against payroll, or formally parked</li>
+        <li>Schedule rebuild reaching the CNA line, not just directors &mdash; the $452K sits there</li>
+        <li>Fill the vacancies driving overtime before cutting the overtime</li>
+        <li>Chart audit on the 36 residents below a 1.20 index; resource the MDS function</li>
+        <li>Private-pay diagnosis &mdash; name the cause before setting a target</li>
+        <li>Medicaid-pending backlog worked against the $443K bad-debt run rate</li>
+        <li>Re-point the $225K admin bonus pool at overtime and skilled-mix targets</li>
       </ul>
     </div>
     <div class="ph">
       <div class="dw">Day 61 &ndash; 100</div>
-      <h3>Hold and prove</h3>
+      <h3>Prove the run-rate</h3>
       <ul>
+        <li>Three clean months of post-exit P&amp;L &mdash; the only real test of this bridge</li>
         <li>Second CO135 listing compared against the October baseline</li>
-        <li>Skilled mix held at or above 12% for a fourth and fifth month</li>
-        <li>Private-pay intervention live with a measurable rate</li>
-        <li>Survey readiness maintained, not relaxed &mdash; the window stays open</li>
-        <li>Plan restated with every carried number either verified or dropped</li>
+        <li>Skilled ADC held at 22 for a sixth consecutive month</li>
+        <li>Overtime tracked weekly against the $1.36M base, by department</li>
+        <li>FY budget built on actual post-exit run-rate, with rent and debt service modeled against it</li>
+        <li>Bridge restated with every placeholder either confirmed or removed</li>
       </ul>
     </div>
   </div>
 </section>
 
-<section id="open">
-  <div class="sec-h"><span class="sec-n">06</span><h2>What is still missing</h2></div>
-  <p class="lede">Four gaps keep parts of this plan unverified. Each is one request away.</p>
+<section id="confirm">
+  <div class="sec-h"><span class="sec-n">07</span><h2>Confirm on Day One</h2></div>
+  <p class="lede">Five items decide whether the Base case holds. All five are one request away.</p>
   <div class="open">
-    <div><b>Cash collections detail</b> The 100% target and 94% six-month average carry over from the original plan with nothing in this set to confirm them. Needs A/R aging and monthly collections against billed.</div>
-    <div><b>HR and payroll</b> Turnover of 61% and the open-position count are unverified. Needs a termination report and current requisitions.</div>
-    <div><b>Agency invoices</b> Both the $17 WPPD baseline and the target unit are unconfirmed. Needs twelve months of agency billing.</div>
-    <div><b>Colorado nursing-component rate</b> Without it the case-mix opportunity can only be stated in index points, not dollars. A +0.05 index move is a 2.9% uplift on the nursing component &mdash; the dollar value needs the rate per index point and cannot be estimated from these documents.</div>
+    <div><b>Colorado rate sheet</b> Medicare A, Managed Care and Medicaid per diems, plus the nursing-component rate per case-mix point. Sets both the skilled lever and the case-mix lever &mdash; together up to $1.13M of the Upside case.</div>
+    <div><b>Part B collection detail</b> Actual cash collected on 4543-0040, separated from therapy Part B. The 42.2% realization is a blended rate across all Part B lines; respiratory alone may differ, and it moves the exit cost directly.</div>
+    <div><b>Payroll and turnover</b> Termination report and current requisitions, to settle 37.4% against 61% and to size how much overtime is structural rather than behavioral.</div>
+    <div><b>Respiratory wind-down cost</b> Staffing roster, notice obligations and severance. Excluded from every scenario in this bridge.</div>
+    <div><b>A/R aging</b> Medicaid-pending backlog and greater-than-90-day balances behind the $442,677 bad-debt line.</div>
   </div>
-  <div class="note">
-    <div class="note-h">On the numbers in this plan</div>
-    <p>Everything in sections 02 through 04 is computed directly from the five source documents and is reproducible from them. Nothing has been estimated, benchmarked against outside data, or carried forward without being marked as carried. Where a figure could not be derived &mdash; most importantly the dollar value of the case-mix opportunity &mdash; it is left unstated rather than modeled.</p>
+  <div class="note acc">
+    <div class="note-h">How to read these numbers</div>
+    <p>Every figure in sections 01 through 05 is computed from the acquisition P&amp;L, the census file, the CO135 listing or the CMS 2567, and reconciles to them. Two inputs are carried from the original model and remain unverified &mdash; the $400 rate differential and the 65% contribution margin &mdash; and both are flagged where they appear. The case-mix lever is an illustration, not a commitment. Nothing has been benchmarked against outside data or estimated where the documents were silent.</p>
   </div>
 </section>
 
 <footer>
-  Sources &mdash; CMS Form 2567 recertification survey completed 30 Jan 2025 (event HQV311, complaints CO38272/38789/38791/39072); Colorado Case Mix System CO135 PDPM resident listing as of 1 Oct 2025, assessments received through 1 Feb 2026; monthly census and payer-day file Jan 2023 &ndash; Apr 2026; vendor payee ledger Aug 2025 &ndash; Aug 2026, property 601ch; therapy caseload summary. Prior plan material carried from the Three Plans, One Cluster executive summary and the Littleton administrator brief.
+  Sources &mdash; Cherrelyn acquisition P&amp;L, property 601ch, 12 months accrual Mar 2025 &ndash; Feb 2026; Cherrelyn EBITDAR Impact Model (baseline, realization and contribution-margin assumptions); Cherrelyn 100-Day Plan workbook; Colorado Case Mix System CO135 resident listing as of 1 Oct 2025; monthly census and payer-day file Jan 2023 &ndash; Apr 2026; CMS Form 2567 recertification survey completed 30 Jan 2025; vendor payee ledger Aug 2025 &ndash; Aug 2026; therapy caseload summary. Prepared 30 Aug 2026.
 </footer>
 
 </div>
 <script>
-const DATA=[{"m":"202301","occ":83.1,"adc":153.6,"cen":4763.0,"adm":43.0,"dis":40.0,"mcaid":78.61,"mcare":6.76,"mmc":5.08,"priv":9.45,"oth":0.1,"mcareDaily":10.4},{"m":"202302","occ":84.8,"adc":156.9,"cen":4394.0,"adm":32.0,"dis":31.0,"mcaid":81.91,"mcare":6.67,"mmc":3.85,"priv":7.58,"oth":0.0,"mcareDaily":10.5},{"m":"202303","occ":86.8,"adc":160.6,"cen":4978.0,"adm":40.0,"dis":36.0,"mcaid":84.09,"mcare":5.2,"mmc":4.36,"priv":6.35,"oth":0.0,"mcareDaily":8.4},{"m":"202304","occ":85.0,"adc":160.6,"cen":4819.0,"adm":34.0,"dis":35.0,"mcaid":84.46,"mcare":5.73,"mmc":1.68,"priv":8.13,"oth":0.0,"mcareDaily":9.2},{"m":"202305","occ":84.7,"adc":160.1,"cen":4962.0,"adm":32.0,"dis":32.0,"mcaid":83.47,"mcare":7.17,"mmc":2.3,"priv":7.01,"oth":0.04,"mcareDaily":11.5},{"m":"202306","occ":85.9,"adc":162.3,"cen":4868.0,"adm":38.0,"dis":34.0,"mcaid":83.11,"mcare":6.43,"mmc":1.83,"priv":8.32,"oth":0.31,"mcareDaily":10.4},{"m":"202307","occ":88.0,"adc":166.2,"cen":5153.0,"adm":32.0,"dis":36.0,"mcaid":83.16,"mcare":3.8,"mmc":2.81,"priv":9.68,"oth":0.54,"mcareDaily":6.3},{"m":"202308","occ":86.8,"adc":164.0,"cen":5085.0,"adm":41.0,"dis":32.0,"mcaid":84.46,"mcare":6.18,"mmc":0.75,"priv":8.24,"oth":0.37,"mcareDaily":10.1},{"m":"202309","occ":88.7,"adc":167.6,"cen":5028.0,"adm":33.0,"dis":31.0,"mcaid":83.57,"mcare":6.76,"mmc":1.17,"priv":8.37,"oth":0.12,"mcareDaily":11.3},{"m":"202310","occ":89.5,"adc":169.1,"cen":5243.0,"adm":39.0,"dis":36.0,"mcaid":84.67,"mcare":5.7,"mmc":2.37,"priv":7.02,"oth":0.25,"mcareDaily":9.6},{"m":"202311","occ":90.7,"adc":171.4,"cen":5142.0,"adm":33.0,"dis":29.0,"mcaid":85.41,"mcare":4.01,"mmc":2.72,"priv":7.66,"oth":0.19,"mcareDaily":6.9},{"m":"202312","occ":94.6,"adc":178.7,"cen":5541.0,"adm":34.0,"dis":32.0,"mcaid":83.97,"mcare":5.54,"mmc":2.24,"priv":8.12,"oth":0.13,"mcareDaily":9.9},{"m":"202401","occ":94.3,"adc":178.3,"cen":5526.0,"adm":39.0,"dis":35.0,"mcaid":83.21,"mcare":5.66,"mmc":1.66,"priv":8.98,"oth":0.49,"mcareDaily":10.1},{"m":"202402","occ":94.6,"adc":178.7,"cen":5183.0,"adm":34.0,"dis":35.0,"mcaid":82.58,"mcare":6.98,"mmc":1.87,"priv":8.47,"oth":0.1,"mcareDaily":12.5},{"m":"202403","occ":92.6,"adc":175.1,"cen":5428.0,"adm":41.0,"dis":40.0,"mcaid":84.27,"mcare":5.47,"mmc":1.82,"priv":8.27,"oth":0.17,"mcareDaily":9.6},{"m":"202404","occ":95.7,"adc":180.8,"cen":5424.0,"adm":40.0,"dis":37.0,"mcaid":81.45,"mcare":10.99,"mmc":0.0,"priv":7.23,"oth":0.33,"mcareDaily":19.9},{"m":"202405","occ":95.3,"adc":180.2,"cen":5586.0,"adm":30.0,"dis":33.0,"mcaid":83.98,"mcare":7.47,"mmc":2.04,"priv":6.48,"oth":0.04,"mcareDaily":13.5},{"m":"202406","occ":93.3,"adc":176.4,"cen":5291.0,"adm":23.0,"dis":29.0,"mcaid":87.17,"mcare":5.8,"mmc":1.3,"priv":5.73,"oth":0.0,"mcareDaily":10.2},{"m":"202407","occ":94.7,"adc":178.9,"cen":5546.0,"adm":33.0,"dis":22.0,"mcaid":88.86,"mcare":4.42,"mmc":1.37,"priv":5.28,"oth":0.07,"mcareDaily":7.9},{"m":"202408","occ":97.0,"adc":183.4,"cen":5684.0,"adm":30.0,"dis":37.0,"mcaid":85.54,"mcare":5.59,"mmc":1.64,"priv":6.83,"oth":0.4,"mcareDaily":10.3},{"m":"202409","occ":92.5,"adc":174.8,"cen":5243.0,"adm":25.0,"dis":28.0,"mcaid":88.35,"mcare":3.4,"mmc":1.28,"priv":6.89,"oth":0.1,"mcareDaily":5.9},{"m":"202410","occ":94.4,"adc":178.4,"cen":5531.0,"adm":41.0,"dis":32.0,"mcaid":87.38,"mcare":4.16,"mmc":2.95,"priv":5.37,"oth":0.14,"mcareDaily":7.4},{"m":"202411","occ":93.1,"adc":175.9,"cen":5278.0,"adm":21.0,"dis":29.0,"mcaid":85.18,"mcare":6.37,"mmc":1.72,"priv":6.56,"oth":0.17,"mcareDaily":11.2},{"m":"202412","occ":93.8,"adc":177.3,"cen":5497.0,"adm":21.0,"dis":18.0,"mcaid":86.76,"mcare":4.95,"mmc":1.06,"priv":7.24,"oth":0.0,"mcareDaily":8.8},{"m":"202501","occ":94.8,"adc":179.2,"cen":5556.0,"adm":23.0,"dis":23.0,"mcaid":88.44,"mcare":3.82,"mmc":0.63,"priv":7.02,"oth":0.09,"mcareDaily":6.8},{"m":"202502","occ":92.8,"adc":175.4,"cen":4912.0,"adm":27.0,"dis":29.0,"mcaid":86.48,"mcare":4.72,"mmc":0.63,"priv":7.96,"oth":0.2,"mcareDaily":8.3},{"m":"202503","occ":92.3,"adc":174.5,"cen":5410.0,"adm":33.0,"dis":34.0,"mcaid":88.87,"mcare":4.18,"mmc":1.87,"priv":4.9,"oth":0.18,"mcareDaily":7.3},{"m":"202504","occ":92.1,"adc":172.2,"cen":5166.0,"adm":21.0,"dis":23.0,"mcaid":87.69,"mcare":3.95,"mmc":1.36,"priv":7.01,"oth":0.0,"mcareDaily":6.8},{"m":"202505","occ":91.7,"adc":171.4,"cen":5313.0,"adm":28.0,"dis":23.0,"mcaid":89.01,"mcare":2.43,"mmc":2.39,"priv":6.1,"oth":0.08,"mcareDaily":4.2},{"m":"202506","occ":91.3,"adc":170.8,"cen":5124.0,"adm":23.0,"dis":36.0,"mcaid":86.46,"mcare":2.91,"mmc":2.4,"priv":8.06,"oth":0.18,"mcareDaily":5.0},{"m":"202507","occ":88.5,"adc":165.4,"cen":5128.0,"adm":35.0,"dis":27.0,"mcaid":85.12,"mcare":4.1,"mmc":3.33,"priv":7.37,"oth":0.08,"mcareDaily":6.8},{"m":"202508","occ":92.5,"adc":172.9,"cen":5361.0,"adm":27.0,"dis":27.0,"mcaid":84.16,"mcare":6.12,"mmc":3.56,"priv":6.16,"oth":0.0,"mcareDaily":10.6},{"m":"202509","occ":90.9,"adc":170.0,"cen":5099.0,"adm":28.0,"dis":34.0,"mcaid":84.55,"mcare":7.18,"mmc":1.82,"priv":6.31,"oth":0.14,"mcareDaily":12.2},{"m":"202510","occ":90.9,"adc":170.0,"cen":5269.0,"adm":34.0,"dis":26.0,"mcaid":89.07,"mcare":4.18,"mmc":2.87,"priv":3.78,"oth":0.11,"mcareDaily":7.1},{"m":"202511","occ":91.9,"adc":171.8,"cen":5153.0,"adm":28.0,"dis":26.0,"mcaid":90.12,"mcare":1.44,"mmc":4.25,"priv":4.19,"oth":0.0,"mcareDaily":2.5},{"m":"202512","occ":91.1,"adc":170.4,"cen":5281.0,"adm":29.0,"dis":28.0,"mcaid":87.1,"mcare":3.62,"mmc":4.51,"priv":4.72,"oth":0.06,"mcareDaily":6.2},{"m":"202601","occ":95.3,"adc":178.1,"cen":5522.0,"adm":32.0,"dis":30.0,"mcaid":83.77,"mcare":7.81,"mmc":3.73,"priv":4.64,"oth":0.05,"mcareDaily":13.9},{"m":"202602","occ":95.0,"adc":177.6,"cen":4972.0,"adm":25.0,"dis":24.0,"mcaid":82.02,"mcare":9.57,"mmc":3.98,"priv":4.32,"oth":0.1,"mcareDaily":17.0},{"m":"202603","occ":95.5,"adc":178.5,"cen":5535.0,"adm":29.0,"dis":29.0,"mcaid":82.13,"mcare":9.14,"mmc":2.87,"priv":5.8,"oth":0.05,"mcareDaily":16.3},{"m":"202604","occ":95.0,"adc":175.7,"cen":5272.0,"adm":32.0,"dis":35.0}]
-;
 const SVGNS="http://www.w3.org/2000/svg";
 const el=(n,a={})=>{const e=document.createElementNS(SVGNS,n);for(const k in a)e.setAttribute(k,a[k]);return e;};
 const cssv=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
-const MON=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-const label=m=>MON[+m.slice(4)-1]+" '"+m.slice(2,4);
-const W=880,PL=44,PR=16,PT=14,PR2=74;
+const W=880,PT=16;
+const money=v=>(v<0?"−$":"$")+Math.abs(Math.round(v)).toLocaleString();
+const kfmt=v=>(v<0?"−$":"$")+(Math.abs(v)>=1e6?(Math.abs(v)/1e6).toFixed(2)+"M":(Math.abs(v)/1000).toFixed(0)+"K");
+const mfmt=v=>"$"+(v/1e6).toFixed(2)+"M";
 
-function frame(host,rows,H,PB,yTicks,fmtY,pr){
-  host.querySelectorAll("svg").forEach(s=>s.remove());
-  const rp=pr||PR;
-  const n=rows.length, iw=W-PL-rp;
-  const svg=el("svg",{viewBox:`0 0 ${W} ${H}`,role:"img"});
-  const X=i=>PL+(n<2?iw/2:i*iw/(n-1));
-  const g=el("g");svg.appendChild(g);
-  yTicks.forEach(t=>{
-    g.appendChild(el("line",{x1:PL,x2:W-rp,y1:t.y,y2:t.y,stroke:cssv("--rule"),"stroke-width":1}));
-    const tx=el("text",{x:PL-10,y:t.y+4,"text-anchor":"end",fill:cssv("--faint"),
+const PB=[["Mar 25",137250],["Apr 25",132550],["May 25",115947],["Jun 25",101600],
+["Jul 25",124725],["Aug 25",98475],["Sep 25",93700],["Oct 25",122725],
+["Nov 25",139275],["Dec 25",153225],["Jan 26",238350],["Feb 26",284775]];
+
+const WF=[["Baseline EBITDAR",2616869,"total"],["Part B respiratory",-1324552,"dn"],
+["RT labor offset",250069,"up"],["Overtime",250000,"up"],
+["Skilled mix held",612105,"up"],["Case-mix capture",156977,"up"],
+["Pro forma EBITDAR",2561467,"total"]];
+
+const OT=[["CNA",452339],["RN",252472],["Nursing Dir RN",170377],["LPN",161708],
+["Nursing Dir LPN",63911],["Dining",52917],["Occ Therapy",39268],
+["Housekeeping",36874],["Activities",31583]];
+
+function grid(svg,ticks,H,PB_,PL,PRr,fmt){
+  ticks.forEach(t=>{
+    svg.appendChild(el("line",{x1:PL,x2:W-PRr,y1:t.y,y2:t.y,stroke:cssv("--rule"),"stroke-width":1}));
+    const x=el("text",{x:PL-10,y:t.y+4,"text-anchor":"end",fill:cssv("--faint"),
       "font-size":11,"font-family":"IBM Plex Mono, monospace"});
-    tx.textContent=fmtY(t.v);g.appendChild(tx);
+    x.textContent=fmt(t.v);svg.appendChild(x);
   });
-  rows.forEach((d,i)=>{
-    if(+d.m.slice(4)!==1)return;
-    const tx=el("text",{x:X(i),y:H-PB+20,"text-anchor":"middle",fill:cssv("--faint"),
-      "font-size":11,"font-family":"IBM Plex Mono, monospace"});
-    tx.textContent=d.m.slice(0,4);g.appendChild(tx);
-  });
-  g.appendChild(el("line",{x1:PL,x2:W-rp,y1:H-PB,y2:H-PB,stroke:cssv("--rule-strong"),"stroke-width":1}));
-  host.insertBefore(svg,host.firstChild);
-  return {svg,X,n};
 }
-
-function hover(host,tip,svg,X,n,H,PB,build){
-  const cur=el("line",{y1:PT,y2:H-PB,stroke:cssv("--rule-strong"),"stroke-width":1,opacity:0});
-  svg.appendChild(cur);
-  svg.appendChild(el("rect",{x:0,y:0,width:W,height:H,fill:"transparent"}));
+function tipOn(host,tip,svg,zones,build){
   const move=ev=>{
-    const r=svg.getBoundingClientRect();
-    if(!r.width)return;
-    const cx=(ev.clientX-r.left)/r.width*W;
-    let bi=0,bd=Infinity;
-    for(let i=0;i<n;i++){const d=Math.abs(X(i)-cx);if(d<bd){bd=d;bi=i;}}
-    cur.setAttribute("x1",X(bi));cur.setAttribute("x2",X(bi));cur.setAttribute("opacity",1);
-    tip.innerHTML=build(bi);tip.classList.add("on");
-    const px=X(bi)/W*r.width, tw=tip.offsetWidth;
+    const r=svg.getBoundingClientRect();if(!r.width)return;
+    const cx=(ev.clientX-r.left)/r.width*W, cy=(ev.clientY-r.top)/r.height*(+svg.dataset.h);
+    let hit=-1;
+    zones.forEach((z,i)=>{if(cx>=z.x0&&cx<=z.x1&&(z.always||(cy>=0)))hit=i;});
+    if(hit<0){tip.classList.remove("on");return;}
+    tip.innerHTML=build(hit);tip.classList.add("on");
+    const px=(zones[hit].x0+zones[hit].x1)/2/W*r.width, tw=tip.offsetWidth;
     tip.style.left=Math.max(4,Math.min(r.width-tw-4,px-tw/2))+"px";
     tip.style.top="4px";
   };
   svg.addEventListener("pointermove",move);
-  svg.addEventListener("pointerleave",()=>{cur.setAttribute("opacity",0);tip.classList.remove("on");});
+  svg.addEventListener("pointerleave",()=>tip.classList.remove("on"));
 }
 
-function occChart(){
-  const host=document.getElementById("c-occ"),tip=document.getElementById("t-occ");
-  const H=290,PB=34,ih=H-PT-PB,lo=80,hi=100;
-  const Y=v=>PT+ih-(v-lo)/(hi-lo)*ih;
-  const {svg,X,n}=frame(host,DATA,H,PB,[80,85,90,95,100].map(v=>({v,y:Y(v)})),v=>v+"%");
-  const pts=DATA.map((d,i)=>[X(i),Y(d.occ)]);
-  const defs=el("defs"),grad=el("linearGradient",{id:"go",x1:0,y1:0,x2:0,y2:1});
-  grad.appendChild(el("stop",{offset:"0%","stop-color":cssv("--accent"),"stop-opacity":.16}));
-  grad.appendChild(el("stop",{offset:"100%","stop-color":cssv("--accent"),"stop-opacity":0}));
-  defs.appendChild(grad);svg.appendChild(defs);
-  const line="M"+pts.map(p=>p[0]+","+p[1]).join("L");
-  svg.appendChild(el("path",{d:line+`L${pts[n-1][0]},${H-PB}L${pts[0][0]},${H-PB}Z`,fill:"url(#go)"}));
-  svg.appendChild(el("path",{d:line,fill:"none",stroke:cssv("--accent"),"stroke-width":2,
-    "stroke-linejoin":"round","stroke-linecap":"round"}));
-  const last=pts[n-1];
-  svg.appendChild(el("circle",{cx:last[0],cy:last[1],r:4.5,fill:cssv("--accent"),
-    stroke:cssv("--surface"),"stroke-width":2}));
-  const lt=el("text",{x:last[0]-9,y:last[1]-13,"text-anchor":"end",fill:cssv("--ink"),
-    "font-size":12.5,"font-weight":600,"font-family":"Archivo, sans-serif"});
-  lt.textContent=DATA[n-1].occ.toFixed(1)+"%";svg.appendChild(lt);
-  hover(host,tip,svg,X,n,H,PB,i=>{const d=DATA[i];
-    return `<div class="tip-h">${label(d.m)}</div>
-      <div class="tip-r"><i>Occupancy</i><b>${d.occ.toFixed(1)}%</b></div>
-      <div class="tip-r"><i>ADC</i><b>${d.adc.toFixed(1)}</b></div>
-      <div class="tip-r"><i>Admissions</i><b>${d.adm}</b></div>
-      <div class="tip-r"><i>Discharges</i><b>${d.dis}</b></div>`;});
-}
-
-function mixChart(){
-  const host=document.getElementById("c-mix"),tip=document.getElementById("t-mix");
-  const D=DATA.filter(d=>d.mcaid!==undefined);
-  const H=320,PB=34,ih=H-PT-PB,MAX=25;
-  const Y=v=>PT+ih-v/MAX*ih;
-  const {svg,X,n}=frame(host,D,H,PB,[0,5,10,15,20,25].map(v=>({v,y:Y(v)})),v=>v+"%",PR2);
-  const series=[{k:"mcare",c:"--s2",n:"Medicare"},
-    {k:"mmc",c:"--s3",n:"Managed Medicare"},{k:"priv",c:"--s4",n:"Private"}];
-  const base=new Array(n).fill(0);
-  series.forEach(s=>{
-    const top=D.map((d,i)=>base[i]+d[s.k]);
-    const up=top.map((v,i)=>X(i)+","+Y(v)).join("L");
-    const dn=[];for(let i=n-1;i>=0;i--)dn.push(X(i)+","+Y(base[i]));
-    svg.appendChild(el("path",{d:"M"+up+"L"+dn.join("L")+"Z",fill:cssv(s.c),"fill-opacity":.9}));
-    svg.appendChild(el("path",{d:"M"+up,fill:"none",stroke:cssv("--surface"),
-      "stroke-width":2,"stroke-linejoin":"round"}));
-    top.forEach((v,i)=>base[i]=v);
+function barsPB(){
+  const host=document.getElementById("c-pb"),tip=document.getElementById("t-pb");
+  host.querySelectorAll("svg").forEach(s=>s.remove());
+  const H=300,PBt=40,PL=58,PRr=14,ih=H-PT-PBt,n=PB.length;
+  const max=300000, Y=v=>PT+ih-v/max*ih;
+  const svg=el("svg",{viewBox:`0 0 ${W} ${H}`,role:"img"});svg.dataset.h=H;
+  grid(svg,[0,100000,200000,300000].map(v=>({v,y:Y(v)})),H,PBt,PL,PRr,v=>"$"+v/1000+"K");
+  const iw=W-PL-PRr, bw=iw/n*0.66, gap=iw/n;
+  const zones=[];
+  PB.forEach(([m,v],i)=>{
+    const x=PL+i*gap+(gap-bw)/2, y=Y(v), h=H-PBt-y;
+    const hot=i>=10;
+    svg.appendChild(el("rect",{x,y,width:bw,height:h,rx:3,
+      fill:hot?cssv("--critical"):cssv("--accent"),"fill-opacity":hot?.95:.75}));
+    const t=el("text",{x:x+bw/2,y:H-PBt+18,"text-anchor":"middle",fill:cssv("--faint"),
+      "font-size":10.5,"font-family":"IBM Plex Mono, monospace"});
+    t.textContent=m;svg.appendChild(t);
+    if(hot){
+      const l=el("text",{x:x+bw/2,y:y-8,"text-anchor":"middle",fill:cssv("--critical"),
+        "font-size":11.5,"font-weight":600,"font-family":"Archivo, sans-serif"});
+      l.textContent="$"+Math.round(v/1000)+"K";svg.appendChild(l);
+    }
+    zones.push({x0:PL+i*gap,x1:PL+(i+1)*gap});
   });
-  // direct labels at the last point, stacked mid-band
-  const mid=[];let acc=0;
-  series.forEach(s=>{const v=D[n-1][s.k];mid.push({n:s.n,c:s.c,y:Y(acc+v/2)});acc+=v;});
-  mid.forEach(m=>{
-    const t=el("text",{x:X(n-1)+6,y:m.y+4,fill:cssv(m.c),"font-size":11.5,"font-weight":600,
-      "font-family":"Archivo, sans-serif"});
-    t.textContent=m.n==="Managed Medicare"?"MMC":m.n;svg.appendChild(t);
-  });
-  hover(host,tip,svg,X,n,H,PB,i=>{const d=D[i];
-    let h=`<div class="tip-h">${label(d.m)}</div>`;
-    series.forEach(s=>{h+=`<div class="tip-r"><i><span class="sw" style="background:var(${s.c})"></span>${s.n}</i><b>${d[s.k].toFixed(1)}%</b></div>`;});
-    h+=`<div class="tip-r" style="border-top:1px solid var(--rule);margin-top:5px;padding-top:5px"><i>Medicaid (balance)</i><b>${d.mcaid.toFixed(1)}%</b></div>`;
-    return h+`<div class="tip-r"><i>Medicare/day</i><b>${d.mcareDaily.toFixed(1)}</b></div>`;});
+  const avg=Y(145216);
+  svg.appendChild(el("line",{x1:PL,x2:W-PRr,y1:avg,y2:avg,stroke:cssv("--ink-2"),
+    "stroke-width":1.5,"stroke-dasharray":"5 4"}));
+  const al=el("text",{x:PL+8,y:avg-8,"text-anchor":"start",fill:cssv("--ink-2"),
+    "font-size":11,"font-weight":600,"font-family":"Archivo, sans-serif"});
+  al.textContent="TTM average $145K/mo";svg.appendChild(al);
+  svg.appendChild(el("line",{x1:PL,x2:W-PRr,y1:H-PBt,y2:H-PBt,stroke:cssv("--rule-strong"),"stroke-width":1}));
+  host.insertBefore(svg,host.firstChild);
+  tipOn(host,tip,svg,zones,i=>`<div class="tip-h">${PB[i][0]}</div>
+    <div class="tip-r"><i>Gross charges</i><b>${money(PB[i][1])}</b></div>
+    <div class="tip-r"><i>Net @ 42.2%</i><b>${money(PB[i][1]*0.422)}</b></div>
+    <div class="tip-r"><i>vs TTM avg</i><b>${money(PB[i][1]-145216)}</b></div>`);
 }
 
-function draw(){occChart();mixChart();}
+function waterfall(){
+  const host=document.getElementById("c-wf"),tip=document.getElementById("t-wf");
+  host.querySelectorAll("svg").forEach(s=>s.remove());
+  const H=330,PBt=58,PL=62,PRr=14,ih=H-PT-PBt,n=WF.length;
+  const max=3000000, Y=v=>PT+ih-v/max*ih;
+  const svg=el("svg",{viewBox:`0 0 ${W} ${H}`,role:"img"});svg.dataset.h=H;
+  grid(svg,[0,1000000,2000000,3000000].map(v=>({v,y:Y(v)})),H,PBt,PL,PRr,v=>"$"+v/1e6+"M");
+  const iw=W-PL-PRr, bw=iw/n*0.62, gap=iw/n;
+  let run=0; const zones=[]; const tops=[];
+  WF.forEach(([lbl,v,kind],i)=>{
+    const x=PL+i*gap+(gap-bw)/2;
+    let y0,y1,col;
+    if(kind==="total"){ y0=Y(0); y1=Y(v); col=cssv("--accent"); run=v; }
+    else if(v<0){ y0=Y(run); run+=v; y1=Y(run); col=cssv("--critical"); }
+    else { y0=Y(run); run+=v; y1=Y(run); col=cssv("--good"); }
+    const top=Math.min(y0,y1), h=Math.max(2,Math.abs(y1-y0));
+    svg.appendChild(el("rect",{x,y:top,width:bw,height:h,rx:3,fill:col,
+      "fill-opacity":kind==="total"?.95:.85}));
+    tops.push({x,bw,top,bottom:top+h,y1});
+    const vl=el("text",{x:x+bw/2,y:top-8,"text-anchor":"middle",
+      fill:kind==="dn"?cssv("--critical"):kind==="up"?cssv("--good"):cssv("--ink"),
+      "font-size":11.5,"font-weight":600,"font-family":"Archivo, sans-serif"});
+    vl.textContent=kind==="total"?mfmt(v):kfmt(v);svg.appendChild(vl);
+    lbl.split(" ").reduce((acc,w)=>{
+      const last=acc[acc.length-1];
+      if(last && (last+" "+w).length<=13){acc[acc.length-1]=last+" "+w;}else acc.push(w);
+      return acc;},[]).forEach((line,k)=>{
+      const t=el("text",{x:x+bw/2,y:H-PBt+17+k*12.5,"text-anchor":"middle",fill:cssv("--muted"),
+        "font-size":10.5,"font-family":"Archivo, sans-serif"});
+      t.textContent=line;svg.appendChild(t);
+    });
+    zones.push({x0:PL+i*gap,x1:PL+(i+1)*gap});
+  });
+  for(let i=0;i<n-1;i++){
+    const a=tops[i],b=tops[i+1];
+    const yy=(WF[i][2]==="dn")?a.bottom:a.top;
+    const yconn=(WF[i][2]==="total")?a.top:yy;
+    svg.appendChild(el("line",{x1:a.x+a.bw,x2:b.x,y1:yconn,y2:yconn,
+      stroke:cssv("--rule-strong"),"stroke-width":1,"stroke-dasharray":"3 3"}));
+  }
+  svg.appendChild(el("line",{x1:PL,x2:W-PRr,y1:Y(0),y2:Y(0),stroke:cssv("--rule-strong"),"stroke-width":1}));
+  host.insertBefore(svg,host.firstChild);
+  tipOn(host,tip,svg,zones,i=>{
+    const [lbl,v,kind]=WF[i];
+    return `<div class="tip-h">${lbl}</div>
+      <div class="tip-r"><i>${kind==="total"?"Level":"Change"}</i><b>${money(v)}</b></div>`;
+  });
+}
+
+function otBars(){
+  const host=document.getElementById("c-ot"),tip=document.getElementById("t-ot");
+  host.querySelectorAll("svg").forEach(s=>s.remove());
+  const rowH=30,PL=150,PRr=70,H=PT+OT.length*rowH+30;
+  const max=480000, iw=W-PL-PRr, X=v=>v/max*iw;
+  const svg=el("svg",{viewBox:`0 0 ${W} ${H}`,role:"img"});svg.dataset.h=H;
+  [0,150000,300000,450000].forEach(v=>{
+    svg.appendChild(el("line",{x1:PL+X(v),x2:PL+X(v),y1:PT-4,y2:PT+OT.length*rowH,
+      stroke:cssv("--rule"),"stroke-width":1}));
+    const t=el("text",{x:PL+X(v),y:PT+OT.length*rowH+18,"text-anchor":"middle",fill:cssv("--faint"),
+      "font-size":11,"font-family":"IBM Plex Mono, monospace"});
+    t.textContent="$"+v/1000+"K";svg.appendChild(t);
+  });
+  const zones=[];
+  OT.forEach(([name,v],i)=>{
+    const y=PT+i*rowH+5, h=rowH-11;
+    const dir=/Dir/.test(name);
+    svg.appendChild(el("rect",{x:PL,y,width:Math.max(2,X(v)),height:h,rx:3,
+      fill:dir?cssv("--warn"):cssv("--accent"),"fill-opacity":dir?.9:.8}));
+    const l=el("text",{x:PL-12,y:y+h/2+4,"text-anchor":"end",fill:cssv("--ink-2"),
+      "font-size":12,"font-family":"Archivo, sans-serif"});
+    l.textContent=name;svg.appendChild(l);
+    const vl=el("text",{x:PL+X(v)+9,y:y+h/2+4,fill:cssv("--ink"),
+      "font-size":11.5,"font-weight":600,"font-family":"IBM Plex Mono, monospace"});
+    vl.textContent="$"+Math.round(v/1000)+"K";svg.appendChild(vl);
+    zones.push({x0:0,x1:W,y0:y,y1:y+h});
+  });
+  host.insertBefore(svg,host.firstChild);
+  const move=ev=>{
+    const r=svg.getBoundingClientRect();if(!r.width)return;
+    const cy=(ev.clientY-r.top)/r.height*H;
+    const i=Math.floor((cy-PT)/rowH);
+    if(i<0||i>=OT.length){tip.classList.remove("on");return;}
+    tip.innerHTML=`<div class="tip-h">${OT[i][0]}</div>
+      <div class="tip-r"><i>Annual overtime</i><b>${money(OT[i][1])}</b></div>
+      <div class="tip-r"><i>Share of building OT</i><b>${(OT[i][1]/1355761*100).toFixed(1)}%</b></div>`;
+    tip.classList.add("on");
+    tip.style.left="auto";tip.style.right="10px";tip.style.top=Math.max(4,(PT+i*rowH)/H*r.height-46)+"px";
+  };
+  svg.addEventListener("pointermove",move);
+  svg.addEventListener("pointerleave",()=>tip.classList.remove("on"));
+}
+
+function draw(){barsPB();waterfall();otBars();}
 if(document.readyState==="loading")addEventListener("DOMContentLoaded",draw);else draw();
 addEventListener("load",draw);
 let rt;addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(draw,180);});
